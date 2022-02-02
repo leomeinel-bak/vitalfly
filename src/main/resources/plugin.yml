@@ -1,0 +1,24 @@
+name: SurvivalFly
+version: @version@
+main: com.tamrielnetwork.survivalfly.SurvivalFly
+api-version: 1.17
+authors: [ Tamriel Network ]
+website: https://tamriel.site
+description: Gives you the ability to fly and toggle fly speed.
+commands:
+  survivalfly:
+    description: "Main command"
+    usage: "/survivalfly"
+permissions:
+  survivalfly.fly:
+    description: "Permission to toggle fly"
+    default: op
+  survivalfly.fly.others:
+    description: "Permission to toggle fly for other players"
+    default: op
+  survivalfly.flyspeed:
+    description: "Permission to set flyspeed"
+    default: op
+  suvivalfly.flyspeed.others:
+    description: "Permission to set flyspeed for other players"
+    default: op
