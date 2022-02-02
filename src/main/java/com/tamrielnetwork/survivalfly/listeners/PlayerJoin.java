@@ -1,8 +1,9 @@
 package com.tamrielnetwork.survivalfly.listeners;
 
+import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerJoinEvent;
 
-public class PlayerJoin {
+public class PlayerJoin implements Listener {
     public void onPlayerJoin(PlayerJoinEvent event) {
         if (!event.getPlayer().hasPermission("survivalfly.fly")) {
             return;

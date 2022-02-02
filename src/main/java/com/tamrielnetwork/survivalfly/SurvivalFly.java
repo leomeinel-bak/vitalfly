@@ -19,6 +19,9 @@ package com.tamrielnetwork.survivalfly;
 
 import com.tamrielnetwork.survivalfly.commands.SurvivalFlyCmd;
 import com.tamrielnetwork.survivalfly.files.Messages;
+import com.tamrielnetwork.survivalfly.listeners.PlayerChangeWorld;
+import com.tamrielnetwork.survivalfly.listeners.PlayerGamemodeChange;
+import com.tamrielnetwork.survivalfly.listeners.PlayerJoin;
 import org.bukkit.Bukkit;
 import org.bukkit.plugin.java.JavaPlugin;
 
@@ -31,9 +34,11 @@ public final class SurvivalFly extends JavaPlugin {
     @Override
     public void onEnable() {
 
-        Objects.requireNonNull(getCommand("survivalfly")).setExecutor(new SurvivalFlyCmd());
+        registerListeners();
 
         saveDefaultConfig();
+
+        Objects.requireNonNull(getCommand("survivalfly")).setExecutor(new SurvivalFlyCmd());
 
         messages = new Messages();
 
@@ -48,6 +53,12 @@ public final class SurvivalFly extends JavaPlugin {
     public void onDisable() {
 
         Bukkit.getLogger().info("SurvivalFly v" + this.getDescription().getVersion() + " disabled");
+    }
+
+    private void registerListeners() {
+        getServer().getPluginManager().registerEvents(new PlayerChangeWorld(), this);
+        getServer().getPluginManager().registerEvents(new PlayerGamemodeChange(), this);
+        getServer().getPluginManager().registerEvents(new PlayerJoin(), this);
     }
 
     public Messages getMessages() {
