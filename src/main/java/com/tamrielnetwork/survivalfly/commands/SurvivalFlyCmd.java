@@ -22,18 +22,18 @@ import com.tamrielnetwork.survivalfly.SurvivalFly;
 import com.tamrielnetwork.survivalfly.utils.Utils;
 import org.bukkit.Bukkit;
 import org.bukkit.command.Command;
-import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
+import org.bukkit.command.TabExecutor;
 import org.bukkit.entity.Player;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
 import java.util.*;
 
-public class SurvivalFlyCmd implements CommandExecutor {
+public class SurvivalFlyCmd implements TabExecutor {
 
     private final SurvivalFly main = JavaPlugin.getPlugin(SurvivalFly.class);
-
 
     @Override
     public boolean onCommand(@NotNull CommandSender sender, @NotNull Command command, @NotNull String label, @NotNull String[] args) {
@@ -169,5 +169,31 @@ public class SurvivalFlyCmd implements CommandExecutor {
             }
         }
 
+    }
+
+    @Override
+    public @Nullable List<String> onTabComplete(@NotNull CommandSender sender, @NotNull Command command, @NotNull String alias, @NotNull String[] args) {
+        @Nullable List<String> tabComplete = new ArrayList<>();
+        switch (args.length) {
+            case 1 -> {
+                if (sender.hasPermission("survivalfly.fly")) {
+                    tabComplete.add("fly");
+                }
+                if (sender.hasPermission("survivalfly.flyspeed")) {
+                    tabComplete.add("flyspeed");
+
+                }
+            }
+            case 2, 3 -> {
+                if (sender.hasPermission("survivalfly.flyspeed") && args[0].equals("flyspeed")) {
+                    tabComplete.addAll(List.of(new String[]{"1", "2", "3", "4", "5", "6", "7", "8", "9"}));
+                }
+                if (sender.hasPermission("survivalfly.fly") && args[0].equals("fly")) {
+                    tabComplete = null;
+                }
+            }
+            default -> tabComplete = null;
+        }
+        return tabComplete;
     }
 }

@@ -37,6 +37,7 @@ public final class SurvivalFly extends JavaPlugin {
         registerListeners();
 
         Objects.requireNonNull(getCommand("survivalfly")).setExecutor(new SurvivalFlyCmd());
+        Objects.requireNonNull(getCommand("survivalfly")).setTabCompleter(new SurvivalFlyCmd());
 
         saveDefaultConfig();
 
