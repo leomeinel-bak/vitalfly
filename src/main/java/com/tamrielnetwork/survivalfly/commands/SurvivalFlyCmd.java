@@ -17,6 +17,7 @@
  */
 package com.tamrielnetwork.survivalfly.commands;
 
+import com.google.common.collect.ImmutableMap;
 import com.tamrielnetwork.survivalfly.SurvivalFly;
 import com.tamrielnetwork.survivalfly.utils.Utils;
 import org.bukkit.Bukkit;
@@ -39,6 +40,7 @@ public class SurvivalFlyCmd implements CommandExecutor {
         // Check args length
         if (args.length == 0) {
             Utils.sendMessage(sender, "no-args");
+            return true;
         }
         // Check arg 0
         switch (args[0]) {
@@ -67,8 +69,15 @@ public class SurvivalFlyCmd implements CommandExecutor {
                 Utils.sendMessage(sender, "no-perms");
                 return;
             }
+            if (((Player) sender).isFlying()) {
+                ((Player) sender).setAllowFlight(false);
+                ((Player) sender).setFlying(false);
+                Utils.sendMessage(sender,"now-flying-disabled");
+                return;
+            }
             ((Player) sender).setAllowFlight(true);
             ((Player) sender).setFlying(true);
+            Utils.sendMessage(sender,"now-flying");
             return;
         }
         // Check args length
@@ -83,8 +92,17 @@ public class SurvivalFlyCmd implements CommandExecutor {
                 Utils.sendMessage(sender, "not-online");
                 return;
             }
+            if (player.isFlying()) {
+                player.setAllowFlight(false);
+                player.setFlying(false);
+                Utils.sendMessage(sender, ImmutableMap.of("%player%", player.getName()),"player-now-flying-disabled");
+                Utils.sendMessage(player, "now-flying-disabled");
+                return;
+            }
             player.setAllowFlight(true);
             player.setFlying(true);
+            Utils.sendMessage(sender, ImmutableMap.of("%player%", player.getName()),"player-now-flying");
+            Utils.sendMessage(player, "now-flying");
         }
     }
 
@@ -105,12 +123,18 @@ public class SurvivalFlyCmd implements CommandExecutor {
                 Utils.sendMessage(sender, "no-perms");
                 return;
             }
-            if (!(Integer.parseInt(args[1]) <= main.getConfig().getInt("flyspeed.limit"))) {
-                Utils.sendMessage(sender, "beyond-limit");
+            try {
+                if (!(Float.parseFloat(args[1]) <= (float) main.getConfig().getInt("flyspeed.limit"))) {
+                    Utils.sendMessage(sender, "beyond-limit");
+                    return;
+                }
+                ((Player) sender).setFlySpeed((Float.parseFloat(args[1]))/10);
+                Utils.sendMessage(sender, ImmutableMap.of("%flyspeed%", String.valueOf(Float.parseFloat(args[1]))),"flyspeed-changed");
+                return;
+            } catch(NumberFormatException numberFormatException){
+                Utils.sendMessage(sender, "invalid-amount");
                 return;
             }
-            ((Player) sender).setFlySpeed((Float.parseFloat(args[1]))/10);
-            return;
         }
         // Check args length
         if (args.length == 3) {
@@ -120,15 +144,24 @@ public class SurvivalFlyCmd implements CommandExecutor {
             }
             Player player = Bukkit.getPlayer(args[1]);
             boolean isOnline = Objects.requireNonNull(player).isOnline();
-            if(!isOnline) {
+            if (!isOnline) {
                 Utils.sendMessage(sender, "not-online");
                 return;
             }
-            if (!(Integer.parseInt(args[2]) <= main.getConfig().getInt("flyspeed.limit"))) {
-                Utils.sendMessage(sender, "beyond-limit");
-                return;
+            try {
+                if (!(Float.parseFloat(args[2]) <= (float) main.getConfig().getInt("flyspeed.limit"))) {
+                    Utils.sendMessage(sender, "beyond-limit");
+                    return;
+                }
+                player.setFlySpeed((Float.parseFloat(args[2]))/10);
+                Utils.sendMessage(sender, ImmutableMap.of(
+                                "%player%", player.getName(),
+                                "%flyspeed%", String.valueOf(Float.parseFloat(args[2]))),
+                        "player-flyspeed-changed");
+                Utils.sendMessage(player, ImmutableMap.of("%flyspeed%", String.valueOf(Float.parseFloat(args[2]))), "flyspeed-changed");
+            } catch(NumberFormatException numberFormatException) {
+                Utils.sendMessage(sender, "invalid-amount");
             }
-            player.setFlySpeed((Float.parseFloat(args[2]))/10);
         }
 
     }
