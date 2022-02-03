@@ -107,6 +107,18 @@ To get the plugin running on your server follow these simple steps.
 * Command: `/survivalfly flyspeed <player> <flyspeed>`
 * Description: Set flyspeed for other players
 
+5. Permission: `survivalfly.fly.worldchange`
+
+* Description: Keep fly on worldchange
+
+6. Permission: `survivalfly.fly.gamemodechange`
+
+* Description: Keep fly on gamemodechange
+
+7. Permission: `survivalfly.fly.login`
+
+* Description: Keep fly on login
+
 ### Configuration - config.yml
 
 ```
