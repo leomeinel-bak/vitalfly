@@ -18,7 +18,7 @@ public class PlayerGamemodeChange implements Listener {
         new BukkitRunnable() {
             @Override
             public void run() {
-                if (!event.getPlayer().hasPermission("survivalfly.fly") || !event.getPlayer().isOnline()) {
+                if (!event.getPlayer().hasPermission("survivalfly.fly") || !event.getPlayer().isOnline() || !event.getPlayer().hasPermission("survivalfly.fly.gamemodechange")) {
                     return;
                 }
 

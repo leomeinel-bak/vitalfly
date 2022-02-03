@@ -12,7 +12,7 @@ public class PlayerJoin implements Listener {
 
     @EventHandler
     public void onPlayerJoin(PlayerJoinEvent event) {
-        if (!event.getPlayer().hasPermission("survivalfly.fly")) {
+        if (!event.getPlayer().hasPermission("survivalfly.fly") || !event.getPlayer().hasPermission("survivalfly.fly.safelogin")) {
             return;
         }
 
