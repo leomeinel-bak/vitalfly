@@ -36,9 +36,9 @@ public final class SurvivalFly extends JavaPlugin {
 
         registerListeners();
 
-        saveDefaultConfig();
-
         Objects.requireNonNull(getCommand("survivalfly")).setExecutor(new SurvivalFlyCmd());
+
+        saveDefaultConfig();
 
         messages = new Messages();
 

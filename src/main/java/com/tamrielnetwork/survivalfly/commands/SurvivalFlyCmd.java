@@ -69,14 +69,13 @@ public class SurvivalFlyCmd implements CommandExecutor {
                 Utils.sendMessage(sender, "no-perms");
                 return;
             }
-            if (((Player) sender).isFlying()) {
+            if (((Player) sender).getAllowFlight()) {
                 ((Player) sender).setAllowFlight(false);
                 ((Player) sender).setFlying(false);
                 Utils.sendMessage(sender,"now-flying-disabled");
                 return;
             }
             ((Player) sender).setAllowFlight(true);
-            ((Player) sender).setFlying(true);
             Utils.sendMessage(sender,"now-flying");
             return;
         }
@@ -86,13 +85,17 @@ public class SurvivalFlyCmd implements CommandExecutor {
                 Utils.sendMessage(sender, "no-perms");
                 return;
             }
+            if (Bukkit.getPlayer(args [1]) == null) {
+                Utils.sendMessage(sender, "invalid-player");
+                return;
+            }
             Player player = Bukkit.getPlayer(args[1]);
             boolean isOnline = Objects.requireNonNull(player).isOnline();
             if(!isOnline) {
                 Utils.sendMessage(sender, "not-online");
                 return;
             }
-            if (player.isFlying()) {
+            if (player.getAllowFlight()) {
                 player.setAllowFlight(false);
                 player.setFlying(false);
                 Utils.sendMessage(sender, ImmutableMap.of("%player%", player.getName()),"player-now-flying-disabled");
@@ -100,7 +103,6 @@ public class SurvivalFlyCmd implements CommandExecutor {
                 return;
             }
             player.setAllowFlight(true);
-            player.setFlying(true);
             Utils.sendMessage(sender, ImmutableMap.of("%player%", player.getName()),"player-now-flying");
             Utils.sendMessage(player, "now-flying");
         }
@@ -142,9 +144,12 @@ public class SurvivalFlyCmd implements CommandExecutor {
                 Utils.sendMessage(sender, "no-perms");
                 return;
             }
+            if (Bukkit.getPlayer(args [1]) == null) {
+                Utils.sendMessage(sender, "invalid-player");
+                return;
+            }
             Player player = Bukkit.getPlayer(args[1]);
-            boolean isOnline = Objects.requireNonNull(player).isOnline();
-            if (!isOnline) {
+            if (!Objects.requireNonNull(player).isOnline()) {
                 Utils.sendMessage(sender, "not-online");
                 return;
             }
