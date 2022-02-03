@@ -126,12 +126,12 @@ public class SurvivalFlyCmd implements TabExecutor {
                 return;
             }
             try {
-                if (!(Float.parseFloat(args[1]) <= (float) main.getConfig().getInt("flyspeed.limit"))) {
+                if (!(Math.abs(Float.parseFloat(args[1])) <= Math.abs((float) main.getConfig().getInt("flyspeed.limit")))) {
                     Utils.sendMessage(sender, "beyond-limit");
                     return;
                 }
-                ((Player) sender).setFlySpeed((Float.parseFloat(args[1]))/10);
-                Utils.sendMessage(sender, ImmutableMap.of("%flyspeed%", String.valueOf(Float.parseFloat(args[1]))),"flyspeed-changed");
+                ((Player) sender).setFlySpeed((Math.abs(Float.parseFloat(args[1])))/10);
+                Utils.sendMessage(sender, ImmutableMap.of("%flyspeed%", String.valueOf(Math.abs(Float.parseFloat(args[1])))),"flyspeed-changed");
                 return;
             } catch(NumberFormatException numberFormatException){
                 Utils.sendMessage(sender, "invalid-amount");
@@ -154,16 +154,16 @@ public class SurvivalFlyCmd implements TabExecutor {
                 return;
             }
             try {
-                if (!(Float.parseFloat(args[2]) <= (float) main.getConfig().getInt("flyspeed.limit"))) {
+                if (!(Math.abs(Float.parseFloat(args[2])) <= Math.abs((float) main.getConfig().getInt("flyspeed.limit")))) {
                     Utils.sendMessage(sender, "beyond-limit");
                     return;
                 }
-                player.setFlySpeed((Float.parseFloat(args[2]))/10);
+                player.setFlySpeed((Math.abs(Float.parseFloat(args[2])))/10);
                 Utils.sendMessage(sender, ImmutableMap.of(
                                 "%player%", player.getName(),
-                                "%flyspeed%", String.valueOf(Float.parseFloat(args[2]))),
+                                "%flyspeed%", String.valueOf(Math.abs(Float.parseFloat(args[2])))),
                         "player-flyspeed-changed");
-                Utils.sendMessage(player, ImmutableMap.of("%flyspeed%", String.valueOf(Float.parseFloat(args[2]))), "flyspeed-changed");
+                Utils.sendMessage(player, ImmutableMap.of("%flyspeed%", String.valueOf(Math.abs(Float.parseFloat(args[2])))), "flyspeed-changed");
             } catch(NumberFormatException numberFormatException) {
                 Utils.sendMessage(sender, "invalid-amount");
             }
