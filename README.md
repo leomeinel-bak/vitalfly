@@ -99,24 +99,40 @@ To get the plugin running on your server follow these simple steps.
 
 3. Permission: `survivalfly.flyspeed`
 
-* Command: `/survivalfly flyspeed`
+* Command: `/survivalfly flyspeed <flyspeed>`
 * Description: Set flyspeed
 
-3. Permission: `survivalfly.flyspeed.others`
+4. Permission: `survivalfly.flyspeed.others`
 
-* Command: `/survivalfly flyspeed <player>`
+* Command: `/survivalfly flyspeed <player> <flyspeed>`
 * Description: Set flyspeed for other players
 
 ### Configuration - config.yml
 
 ```
-
+flyspeed:
+  # Values from 1-10
+  # Don't use floating-point numbers
+  limit: 10
 ```
 
 ### Configuration - messages.yml
 
 ```
-
+no-args: "&7Enter this command: &b/survivalfly fly/flyspeed <player> <flyspeed>"
+player-only: "&cThis command can only be executed by players!"
+invalid-option: "&cInvalid option!"
+invalid-player: "&cInvalid player!"
+not-online: "&cPlayer is not online!"
+beyond-limit: "&cThe number is too high!"
+no-perms: "&7You don't have enough permissions!"
+invalid-amount: "&cInvalid amount!"
+now-flying: "&7Fly toggled &aON"
+now-flying-disabled: "&7Fly toggled &cOFF"
+player-now-flying: "&7Fly toggled &aON &7for &b%player%"
+player-now-flying-disabled: "&7Fly toggled &cOFF &7for &b%player%"
+flyspeed-changed: "&7FlySpeed set to &b%flyspeed%&7"
+player-flyspeed-changed: "&7Flyspeed set to &b%flyspeed% &7for &b%player%&7"
 ```
 
 <!-- ROADMAP -->
