@@ -10,23 +10,23 @@
 <!--suppress ALL -->
 <br />
 <p align="center">
-  <a href="https://github.com/TamrielNetwork/SurvivalFly">
+  <a href="https://github.com/TamrielNetwork/VitalFly">
     <img src="images/logo.png" alt="Logo" width="80" height="80">
   </a>
 
-<h3 align="center">SurvivalFly</h3>
+<h3 align="center">VitalFly</h3>
 
   <p align="center">
     Fly on Spigot and Paper
     <br />
-    <a href="https://github.com/TamrielNetwork/SurvivalFly"><strong>Explore the docs »</strong></a>
+    <a href="https://github.com/TamrielNetwork/VitalFly"><strong>Explore the docs »</strong></a>
     <br />
     <br />
-    <a href="https://github.com/TamrielNetwork/SurvivalFly">View Demo</a>
+    <a href="https://github.com/TamrielNetwork/VitalFly">View Demo</a>
     ·
-    <a href="https://github.com/TamrielNetwork/SurvivalFly/issues">Report Bug</a>
+    <a href="https://github.com/TamrielNetwork/VitalFly/issues">Report Bug</a>
     ·
-    <a href="https://github.com/TamrielNetwork/SurvivalFly/issues">Request Feature</a>
+    <a href="https://github.com/TamrielNetwork/VitalFly/issues">Request Feature</a>
   </p>
 
 <!-- TABLE OF CONTENTS -->
@@ -62,7 +62,7 @@
 
 ### Description
 
-SurvivalFly is a Plugin that gives players the ability to fly.
+VitalFly is a Plugin that gives players the ability to fly.
 
 This plugin is perfect for any server wanting their players to fly in survival.
 
@@ -87,35 +87,35 @@ To get the plugin running on your server follow these simple steps.
 
 ### Commands and Permissions
 
-1. Permission: `survivalfly.fly`
+1. Permission: `vitalfly.fly`
 
-* Command: `/survivalfly fly`
+* Command: `/vitalfly fly`
 * Description: Toggle fly
 
-2. Permission: `survivalfly.fly.others`
+2. Permission: `vitalfly.fly.others`
 
-* Command: `/survivalfly fly <player>`
+* Command: `/vitalfly fly <player>`
 * Description: Toggle fly for other players
 
-3. Permission: `survivalfly.flyspeed`
+3. Permission: `vitalfly.flyspeed`
 
-* Command: `/survivalfly flyspeed <flyspeed>`
+* Command: `/vitalfly flyspeed <flyspeed>`
 * Description: Set flyspeed
 
-4. Permission: `survivalfly.flyspeed.others`
+4. Permission: `vitalfly.flyspeed.others`
 
-* Command: `/survivalfly flyspeed <player> <flyspeed>`
+* Command: `/vitalfly flyspeed <player> <flyspeed>`
 * Description: Set flyspeed for other players
 
-5. Permission: `survivalfly.fly.worldchange`
+5. Permission: `vitalfly.fly.worldchange`
 
 * Description: Keep fly on worldchange
 
-6. Permission: `survivalfly.fly.gamemodechange`
+6. Permission: `vitalfly.fly.gamemodechange`
 
 * Description: Keep fly on gamemodechange
 
-7. Permission: `survivalfly.fly.login`
+7. Permission: `vitalfly.fly.login`
 
 * Description: Keep fly on login
 
@@ -131,7 +131,7 @@ flyspeed:
 ### Configuration - messages.yml
 
 ```
-no-args: "&7Enter this command: &b/survivalfly fly/flyspeed <player> <flyspeed>"
+no-args: "&7Enter this command: &b/vitalfly fly/flyspeed <player> <flyspeed>"
 player-only: "&cThis command can only be executed by players!"
 invalid-option: "&cInvalid option!"
 invalid-player: "&cInvalid player!"
@@ -151,7 +151,7 @@ player-flyspeed-changed: "&7Flyspeed set to &b%flyspeed% &7for &b%player%&7"
 
 ## Roadmap
 
-See the [open issues](https://github.com/TamrielNetwork/SurvivalFly/issues) for a list of proposed features (and known
+See the [open issues](https://github.com/TamrielNetwork/VitalFly/issues) for a list of proposed features (and known
 issues).
 
 <!-- CONTRIBUTING -->
@@ -181,7 +181,7 @@ Leopold Meinel - [@TamrielN](https://twitter.com/TamrielN) - Twitter
 
 Leopold Meinel - [contact@tamriel.me](mailto:contact@tamriel.me) - eMail
 
-Project Link - [SurvivalFly](https://github.com/TamrielNetwork/SurvivalFly) - GitHub
+Project Link - [VitalFly](https://github.com/TamrielNetwork/VitalFly) - GitHub
 
 <!-- ACKNOWLEDGEMENTS -->
 
@@ -191,26 +191,26 @@ Project Link - [SurvivalFly](https://github.com/TamrielNetwork/SurvivalFly) - Gi
 
 <!-- MARKDOWN LINKS & IMAGES -->
 
-[contributors-shield]: https://img.shields.io/github/contributors-anon/TamrielNetwork/SurvivalFly?style=for-the-badge
+[contributors-shield]: https://img.shields.io/github/contributors-anon/TamrielNetwork/VitalFly?style=for-the-badge
 
-[contributors-url]: https://github.com/TamrielNetwork/SurvivalFly/graphs/contributors
+[contributors-url]: https://github.com/TamrielNetwork/VitalFly/graphs/contributors
 
-[forks-shield]: https://img.shields.io/github/forks/TamrielNetwork/SurvivalFly?label=Forks&style=for-the-badge
+[forks-shield]: https://img.shields.io/github/forks/TamrielNetwork/VitalFly?label=Forks&style=for-the-badge
 
-[forks-url]: https://github.com/TamrielNetwork/SurvivalFly/network/members
+[forks-url]: https://github.com/TamrielNetwork/VitalFly/network/members
 
-[stars-shield]: https://img.shields.io/github/stars/TamrielNetwork/SurvivalFly?style=for-the-badge
+[stars-shield]: https://img.shields.io/github/stars/TamrielNetwork/VitalFly?style=for-the-badge
 
-[stars-url]: https://github.com/TamrielNetwork/SurvivalFly/stargazers
+[stars-url]: https://github.com/TamrielNetwork/VitalFly/stargazers
 
-[issues-shield]: https://img.shields.io/github/issues/TamrielNetwork/SurvivalFly?style=for-the-badge
+[issues-shield]: https://img.shields.io/github/issues/TamrielNetwork/VitalFly?style=for-the-badge
 
-[issues-url]: https://github.com/TamrielNetwork/SurvivalFly/issues
+[issues-url]: https://github.com/TamrielNetwork/VitalFly/issues
 
-[license-shield]: https://img.shields.io/github/license/TamrielNetwork/SurvivalFly?style=for-the-badge
+[license-shield]: https://img.shields.io/github/license/TamrielNetwork/VitalFly?style=for-the-badge
 
-[license-url]: https://github.com/TamrielNetwork/SurvivalFly/blob/main/LICENSE
+[license-url]: https://github.com/TamrielNetwork/VitalFly/blob/main/LICENSE
 
-[quality-shield]: https://img.shields.io/codefactor/grade/github/TamrielNetwork/SurvivalFly?style=for-the-badge
+[quality-shield]: https://img.shields.io/codefactor/grade/github/TamrielNetwork/VitalFly?style=for-the-badge
 
-[quality-url]: https://www.codefactor.io/repository/github/TamrielNetwork/SurvivalFly
+[quality-url]: https://www.codefactor.io/repository/github/TamrielNetwork/VitalFly

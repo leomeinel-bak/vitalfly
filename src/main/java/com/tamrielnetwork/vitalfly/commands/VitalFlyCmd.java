@@ -1,5 +1,5 @@
 /*
- SurvivalFly is a Spigot Plugin that gives players the ability to fly.
+ VitalFly is a Spigot Plugin that gives players the ability to fly.
  Copyright (C) 2022  Leopold Meinel
 
  This program is free software: you can redistribute it and/or modify
@@ -15,11 +15,11 @@
  You should have received a copy of the GNU General Public License
  along with this program. If not, see https://github.com/TamrielNetwork/RandomSpawnTp/blob/main/LICENSE.
  */
-package com.tamrielnetwork.survivalfly.commands;
+package com.tamrielnetwork.vitalfly.commands;
 
 import com.google.common.collect.ImmutableMap;
-import com.tamrielnetwork.survivalfly.SurvivalFly;
-import com.tamrielnetwork.survivalfly.utils.Utils;
+import com.tamrielnetwork.vitalfly.VitalFly;
+import com.tamrielnetwork.vitalfly.utils.Utils;
 import org.bukkit.Bukkit;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
@@ -33,9 +33,9 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
-public class SurvivalFlyCmd implements TabExecutor {
+public class VitalFlyCmd implements TabExecutor {
 
-	private final SurvivalFly main = JavaPlugin.getPlugin(SurvivalFly.class);
+	private final VitalFly main = JavaPlugin.getPlugin(VitalFly.class);
 
 	@Override
 	public boolean onCommand(@NotNull CommandSender sender, @NotNull Command command, @NotNull String label, @NotNull String[] args) {
@@ -67,7 +67,7 @@ public class SurvivalFlyCmd implements TabExecutor {
 		}
 		//Check args length
 		if (args.length == 1) {
-			if (!sender.hasPermission("survivalfly.fly")) {
+			if (!sender.hasPermission("vitalfly.fly")) {
 				Utils.sendMessage(sender, "no-perms");
 				return;
 			}
@@ -83,7 +83,7 @@ public class SurvivalFlyCmd implements TabExecutor {
 		}
 		// Check args length
 		if (args.length == 2) {
-			if (!sender.hasPermission("survivalfly.fly.others")) {
+			if (!sender.hasPermission("vitalfly.fly.others")) {
 				Utils.sendMessage(sender, "no-perms");
 				return;
 			}
@@ -123,7 +123,7 @@ public class SurvivalFlyCmd implements TabExecutor {
 		}
 		//Check args length
 		if (args.length == 2) {
-			if (!sender.hasPermission("survivalfly.flyspeed")) {
+			if (!sender.hasPermission("vitalfly.flyspeed")) {
 				Utils.sendMessage(sender, "no-perms");
 				return;
 			}
@@ -142,7 +142,7 @@ public class SurvivalFlyCmd implements TabExecutor {
 		}
 		// Check args length
 		if (args.length == 3) {
-			if (!sender.hasPermission("survivalfly.flyspeed.others")) {
+			if (!sender.hasPermission("vitalfly.flyspeed.others")) {
 				Utils.sendMessage(sender, "no-perms");
 				return;
 			}
@@ -178,19 +178,19 @@ public class SurvivalFlyCmd implements TabExecutor {
 		@Nullable List<String> tabComplete = new ArrayList<>();
 		switch (args.length) {
 			case 1 -> {
-				if (sender.hasPermission("survivalfly.fly")) {
+				if (sender.hasPermission("vitalfly.fly")) {
 					tabComplete.add("fly");
 				}
-				if (sender.hasPermission("survivalfly.flyspeed")) {
+				if (sender.hasPermission("vitalfly.flyspeed")) {
 					tabComplete.add("flyspeed");
 
 				}
 			}
 			case 2, 3 -> {
-				if (sender.hasPermission("survivalfly.flyspeed") && args[0].equals("flyspeed")) {
+				if (sender.hasPermission("vitalfly.flyspeed") && args[0].equals("flyspeed")) {
 					tabComplete.addAll(List.of(new String[]{"1", "2", "3", "4", "5", "6", "7", "8", "9"}));
 				}
-				if (sender.hasPermission("survivalfly.fly") && args[0].equals("fly")) {
+				if (sender.hasPermission("vitalfly.fly") && args[0].equals("fly")) {
 					tabComplete = null;
 				}
 			}

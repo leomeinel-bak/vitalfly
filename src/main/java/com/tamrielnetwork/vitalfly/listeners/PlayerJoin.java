@@ -1,4 +1,4 @@
-package com.tamrielnetwork.survivalfly.listeners;
+package com.tamrielnetwork.vitalfly.listeners;
 
 import org.bukkit.Location;
 import org.bukkit.event.EventHandler;
@@ -12,7 +12,7 @@ public class PlayerJoin implements Listener {
 
 	@EventHandler
 	public void onPlayerJoin(PlayerJoinEvent event) {
-		if (!event.getPlayer().hasPermission("survivalfly.fly") || !event.getPlayer().hasPermission("survivalfly.fly.login")) {
+		if (!event.getPlayer().hasPermission("vitalfly.fly") || !event.getPlayer().hasPermission("vitalfly.fly.login")) {
 			return;
 		}
 

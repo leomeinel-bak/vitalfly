@@ -1,5 +1,5 @@
 /*
- SurvivalFly is a Spigot Plugin that gives players the ability to fly.
+ VitalFly is a Spigot Plugin that gives players the ability to fly.
  Copyright (C) 2022  Leopold Meinel
 
  This program is free software: you can redistribute it and/or modify
@@ -15,9 +15,9 @@
  You should have received a copy of the GNU General Public License
  along with this program. If not, see https://github.com/TamrielNetwork/RandomSpawnTp/blob/main/LICENSE.
  */
-package com.tamrielnetwork.survivalfly.files;
+package com.tamrielnetwork.vitalfly.files;
 
-import com.tamrielnetwork.survivalfly.SurvivalFly;
+import com.tamrielnetwork.vitalfly.VitalFly;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.plugin.java.JavaPlugin;
@@ -26,7 +26,7 @@ import java.io.File;
 
 public class Messages {
 
-	private final SurvivalFly main = JavaPlugin.getPlugin(SurvivalFly.class);
+	private final VitalFly main = JavaPlugin.getPlugin(VitalFly.class);
 	private final File messagesFile;
 	private final FileConfiguration messagesConf;
 

@@ -1,4 +1,4 @@
-no-args: "&7Enter this command: &b/survivalfly fly/flyspeed <player> <flyspeed>"
+no-args: "&7Enter this command: &b/vitalfly fly/flyspeed <player> <flyspeed>"
 player-only: "&cThis command can only be executed by players!"
 invalid-option: "&cInvalid option!"
 invalid-player: "&cInvalid player!"

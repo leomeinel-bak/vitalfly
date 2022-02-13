@@ -1,6 +1,6 @@
-package com.tamrielnetwork.survivalfly.listeners;
+package com.tamrielnetwork.vitalfly.listeners;
 
-import com.tamrielnetwork.survivalfly.utils.Utils;
+import com.tamrielnetwork.vitalfly.utils.Utils;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerChangedWorldEvent;
@@ -8,7 +8,7 @@ import org.bukkit.event.player.PlayerChangedWorldEvent;
 public class PlayerChangeWorld implements Listener {
 	@EventHandler
 	public void onPlayerChangeWorld(PlayerChangedWorldEvent event) {
-		if (!event.getPlayer().hasPermission("survivalfly.fly") || !event.getPlayer().hasPermission("survivalfly.fly.worldchange")) {
+		if (!event.getPlayer().hasPermission("vitalfly.fly") || !event.getPlayer().hasPermission("vitalfly.fly.worldchange")) {
 			return;
 		}
 		event.getPlayer().setAllowFlight(true);

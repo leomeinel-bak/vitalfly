@@ -1,6 +1,6 @@
-package com.tamrielnetwork.survivalfly.listeners;
+package com.tamrielnetwork.vitalfly.listeners;
 
-import com.tamrielnetwork.survivalfly.SurvivalFly;
+import com.tamrielnetwork.vitalfly.VitalFly;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerGameModeChangeEvent;
@@ -11,14 +11,14 @@ import static org.bukkit.GameMode.SURVIVAL;
 
 public class PlayerGamemodeChange implements Listener {
 
-	private final SurvivalFly main = JavaPlugin.getPlugin(SurvivalFly.class);
+	private final VitalFly main = JavaPlugin.getPlugin(VitalFly.class);
 
 	@EventHandler
 	public void onGamemodeChange(PlayerGameModeChangeEvent event) {
 		new BukkitRunnable() {
 			@Override
 			public void run() {
-				if (!event.getPlayer().hasPermission("survivalfly.fly") || !event.getPlayer().isOnline() || !event.getPlayer().hasPermission("survivalfly.fly.gamemodechange")) {
+				if (!event.getPlayer().hasPermission("vitalfly.fly") || !event.getPlayer().isOnline() || !event.getPlayer().hasPermission("vitalfly.fly.gamemodechange")) {
 					return;
 				}
 

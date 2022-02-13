@@ -1,33 +1,33 @@
-name: SurvivalFly
+name: VitalFly
 version: @version@
-main: com.tamrielnetwork.survivalfly.SurvivalFly
+main: com.tamrielnetwork.vitalfly.VitalFly
 api-version: 1.17
 authors: [ Tamriel Network ]
 website: https://tamriel.site
 description: Gives you the ability to fly and toggle fly speed.
 commands:
-  survivalfly:
+  vitalfly:
     description: "Main command"
-    usage: "/survivalfly"
+    usage: "/vitalfly"
 permissions:
-  survivalfly.fly:
+  vitalfly.fly:
     description: "Permission to toggle fly"
     default: op
-  survivalfly.fly.others:
+  vitalfly.fly.others:
     description: "Permission to toggle fly for other players"
     default: op
-  survivalfly.flyspeed:
+  vitalfly.flyspeed:
     description: "Permission to set flyspeed"
     default: op
-  suvivalfly.flyspeed.others:
+  vitalfly.flyspeed.others:
     description: "Permission to set flyspeed for other players"
     default: op
-  survivalfly.fly.worldchange:
+  vitalfly.fly.worldchange:
     description: "Permission to keep fly on worldchange"
     default: op
-  survivalfly.fly.gamemodechange:
+  vitalfly.fly.gamemodechange:
     description: "Permission to keep fly on gamemodechange"
     default: op
-  survivalfly.fly.login:
+  vitalfly.fly.login:
     description: "Permission to keep fly on login"
     default: op

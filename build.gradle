@@ -22,7 +22,7 @@ plugins {
     id 'java'
 }
 
-group 'com.tamrielnetwork.survivalfly'
+group 'com.tamrielnetwork.vitalfly'
 version '1.0.0'
 
 repositories {
