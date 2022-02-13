@@ -29,42 +29,42 @@ import java.util.Objects;
 
 public final class SurvivalFly extends JavaPlugin {
 
-    private Messages messages;
+	private Messages messages;
 
-    @Override
-    public void onEnable() {
+	@Override
+	public void onEnable() {
 
-        registerListeners();
+		registerListeners();
 
-        Objects.requireNonNull(getCommand("survivalfly")).setExecutor(new SurvivalFlyCmd());
-        Objects.requireNonNull(getCommand("survivalfly")).setTabCompleter(new SurvivalFlyCmd());
+		Objects.requireNonNull(getCommand("survivalfly")).setExecutor(new SurvivalFlyCmd());
+		Objects.requireNonNull(getCommand("survivalfly")).setTabCompleter(new SurvivalFlyCmd());
 
-        saveDefaultConfig();
+		saveDefaultConfig();
 
-        messages = new Messages();
+		messages = new Messages();
 
-        Bukkit.getLogger().info("SurvivalFly v" + this.getDescription().getVersion() + " enabled");
-        Bukkit.getLogger().info("Copyright (C) 2022 Leopold Meinel");
-        Bukkit.getLogger().info("This program comes with ABSOLUTELY NO WARRANTY!");
-        Bukkit.getLogger().info("This is free software, and you are welcome to redistribute it under certain conditions.");
-        Bukkit.getLogger().info("See https://github.com/TamrielNetwork/SurvivalFly/blob/main/LICENSE for more details.");
-    }
+		Bukkit.getLogger().info("SurvivalFly v" + this.getDescription().getVersion() + " enabled");
+		Bukkit.getLogger().info("Copyright (C) 2022 Leopold Meinel");
+		Bukkit.getLogger().info("This program comes with ABSOLUTELY NO WARRANTY!");
+		Bukkit.getLogger().info("This is free software, and you are welcome to redistribute it under certain conditions.");
+		Bukkit.getLogger().info("See https://github.com/TamrielNetwork/SurvivalFly/blob/main/LICENSE for more details.");
+	}
 
-    @Override
-    public void onDisable() {
+	@Override
+	public void onDisable() {
 
-        Bukkit.getLogger().info("SurvivalFly v" + this.getDescription().getVersion() + " disabled");
-    }
+		Bukkit.getLogger().info("SurvivalFly v" + this.getDescription().getVersion() + " disabled");
+	}
 
-    private void registerListeners() {
-        getServer().getPluginManager().registerEvents(new PlayerChangeWorld(), this);
-        getServer().getPluginManager().registerEvents(new PlayerGamemodeChange(), this);
-        getServer().getPluginManager().registerEvents(new PlayerJoin(), this);
-    }
+	private void registerListeners() {
+		getServer().getPluginManager().registerEvents(new PlayerChangeWorld(), this);
+		getServer().getPluginManager().registerEvents(new PlayerGamemodeChange(), this);
+		getServer().getPluginManager().registerEvents(new PlayerJoin(), this);
+	}
 
-    public Messages getMessages() {
-        return messages;
-    }
+	public Messages getMessages() {
+		return messages;
+	}
 
 }
 

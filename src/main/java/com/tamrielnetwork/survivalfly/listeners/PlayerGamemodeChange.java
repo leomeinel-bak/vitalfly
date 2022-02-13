@@ -11,23 +11,23 @@ import static org.bukkit.GameMode.SURVIVAL;
 
 public class PlayerGamemodeChange implements Listener {
 
-    private final SurvivalFly main = JavaPlugin.getPlugin(SurvivalFly.class);
+	private final SurvivalFly main = JavaPlugin.getPlugin(SurvivalFly.class);
 
-    @EventHandler
-    public void onGamemodeChange(PlayerGameModeChangeEvent event) {
-        new BukkitRunnable() {
-            @Override
-            public void run() {
-                if (!event.getPlayer().hasPermission("survivalfly.fly") || !event.getPlayer().isOnline() || !event.getPlayer().hasPermission("survivalfly.fly.gamemodechange")) {
-                    return;
-                }
+	@EventHandler
+	public void onGamemodeChange(PlayerGameModeChangeEvent event) {
+		new BukkitRunnable() {
+			@Override
+			public void run() {
+				if (!event.getPlayer().hasPermission("survivalfly.fly") || !event.getPlayer().isOnline() || !event.getPlayer().hasPermission("survivalfly.fly.gamemodechange")) {
+					return;
+				}
 
-                if (event.getNewGameMode() == SURVIVAL) {
-                    event.getPlayer().setAllowFlight(true);
-                    event.getPlayer().setFlying(true);
-                }
-            }
-        }.runTaskLater(main, 1);
-    }
+				if (event.getNewGameMode() == SURVIVAL) {
+					event.getPlayer().setAllowFlight(true);
+					event.getPlayer().setFlying(true);
+				}
+			}
+		}.runTaskLater(main, 1);
+	}
 
 }
