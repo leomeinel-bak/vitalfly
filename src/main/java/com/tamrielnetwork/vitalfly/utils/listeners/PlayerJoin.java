@@ -16,25 +16,7 @@
  * along with this program. If not, see https://github.com/TamrielNetwork/VitalFly/blob/main/LICENSE
  */
 
-package com.tamrielnetwork.vitalfly.listeners;
+package com.tamrielnetwork.vitalfly.utils.listeners;
 
-import com.tamrielnetwork.vitalfly.utils.Chat;
-import org.bukkit.entity.Player;
-import org.bukkit.event.EventHandler;
-import org.bukkit.event.Listener;
-import org.bukkit.event.player.PlayerChangedWorldEvent;
-import org.jetbrains.annotations.NotNull;
-
-public class PlayerChangeWorld implements Listener {
-	@EventHandler
-	public void onPlayerChangeWorld(@NotNull PlayerChangedWorldEvent event) {
-		Player player = event.getPlayer();
-		if (!player.hasPermission("vitalfly.fly") || !player.hasPermission("vitalfly.fly.worldchange")) {
-			return;
-		}
-		player.setAllowFlight(true);
-		Chat.sendMessage(player, "now-flying");
-
-	}
-
+public class PlayerJoin {
 }

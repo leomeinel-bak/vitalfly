@@ -19,9 +19,11 @@
 package com.tamrielnetwork.vitalfly.listeners;
 
 import org.bukkit.Location;
+import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerJoinEvent;
+import org.jetbrains.annotations.NotNull;
 
 import static org.bukkit.Material.AIR;
 
@@ -29,20 +31,22 @@ import static org.bukkit.Material.AIR;
 public class PlayerJoin implements Listener {
 
 	@EventHandler
-	public void onPlayerJoin(PlayerJoinEvent event) {
-		if (!event.getPlayer().hasPermission("vitalfly.fly") || !event.getPlayer().hasPermission("vitalfly.fly.login")) {
+	public void onPlayerJoin(@NotNull PlayerJoinEvent event) {
+		Player player = event.getPlayer();
+		if (!player.hasPermission("vitalfly.fly") || !player.hasPermission("vitalfly.fly.login")) {
 			return;
 		}
 
 		if (isInAir(event)) {
-			event.getPlayer().setAllowFlight(true);
-			event.getPlayer().setFlying(true);
+			player.setAllowFlight(true);
+			player.setFlying(true);
 		}
 	}
 
-	private boolean isInAir(PlayerJoinEvent event) {
-		Location location = event.getPlayer().getLocation();
+	private boolean isInAir(@NotNull PlayerJoinEvent event) {
+		Player player = event.getPlayer();
+		Location location = player.getLocation();
 		location.setY(location.getY() - 2);
-		return event.getPlayer().getWorld().getBlockAt(location).getType() == AIR;
+		return player.getWorld().getBlockAt(location).getType() == AIR;
 	}
 }

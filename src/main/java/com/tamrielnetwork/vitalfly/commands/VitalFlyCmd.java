@@ -18,158 +18,101 @@
 
 package com.tamrielnetwork.vitalfly.commands;
 
-import com.google.common.collect.ImmutableMap;
-import com.tamrielnetwork.vitalfly.VitalFly;
-import com.tamrielnetwork.vitalfly.utils.Utils;
+import com.tamrielnetwork.vitalfly.utils.Chat;
+import com.tamrielnetwork.vitalfly.utils.commands.Cmd;
+import com.tamrielnetwork.vitalfly.utils.commands.CmdSpec;
 import org.bukkit.Bukkit;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 import org.bukkit.command.TabExecutor;
 import org.bukkit.entity.Player;
-import org.bukkit.plugin.java.JavaPlugin;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
 
 public class VitalFlyCmd implements TabExecutor {
 
-	private final VitalFly main = JavaPlugin.getPlugin(VitalFly.class);
-
 	@Override
 	public boolean onCommand(@NotNull CommandSender sender, @NotNull Command command, @NotNull String label, @NotNull String[] args) {
-		// Check args length
-		if (args.length == 0) {
-			Utils.sendMessage(sender, "no-args");
+
+		if (Cmd.isArgsLengthEqualTo(sender, args, 0) || Cmd.isArgsLengthGreaterThan(sender, args, 3)) {
 			return true;
 		}
-		// Check arg 0
+
 		switch (args[0]) {
-			case "fly" -> toggleFly(sender, args);
-			case "flyspeed" -> toggleFlySpeed(sender, args);
-			default -> Utils.sendMessage(sender, "invalid-option");
+			case "fly" -> doFly(sender, args);
+			case "flyspeed" -> doFlySpeed(sender, args);
+			default -> Chat.sendMessage(sender, "invalid-option");
 		}
 
 		return true;
 	}
 
-	private void toggleFly(CommandSender sender, String[] args) {
-		// Check if command sender is a player
-		if (!(sender instanceof Player)) {
-			Utils.sendMessage(sender, "player-only");
+	private void doFly(@NotNull CommandSender sender, @NotNull String[] args) {
+		Player senderPlayer = (Player) sender;
+
+		if (Cmd.isArgsLengthGreaterThan(sender, args, 2)) {
 			return;
 		}
-		// Check args length
-		if (args.length > 2) {
-			Utils.sendMessage(sender, "invalid-option");
+		if (Cmd.isInvalidSender(sender)) {
 			return;
 		}
-		//Check args length
+
 		if (args.length == 1) {
-			if (!sender.hasPermission("vitalfly.fly")) {
-				Utils.sendMessage(sender, "no-perms");
+			if (Cmd.isNotPermitted(sender, "vitalfly.fly")) {
 				return;
 			}
-			if (((Player) sender).getAllowFlight()) {
-				((Player) sender).setAllowFlight(false);
-				((Player) sender).setFlying(false);
-				Utils.sendMessage(sender, "now-flying-disabled");
+			if (senderPlayer.getAllowFlight()) {
+				CmdSpec.disableFlight(senderPlayer);
 				return;
 			}
-			((Player) sender).setAllowFlight(true);
-			Utils.sendMessage(sender, "now-flying");
+			CmdSpec.enableFlight(senderPlayer);
 			return;
 		}
-		// Check args length
+
 		if (args.length == 2) {
-			if (!sender.hasPermission("vitalfly.fly.others")) {
-				Utils.sendMessage(sender, "no-perms");
-				return;
-			}
-			if (Bukkit.getPlayer(args[1]) == null) {
-				Utils.sendMessage(sender, "invalid-player");
-				return;
-			}
 			Player player = Bukkit.getPlayer(args[1]);
-			boolean isOnline = Objects.requireNonNull(player).isOnline();
-			if (!isOnline) {
-				Utils.sendMessage(sender, "not-online");
+
+			if (CmdSpec.isInvalidCmd(sender, player, "vitalfly.fly.others")) {
 				return;
 			}
+
+			assert player != null;
 			if (player.getAllowFlight()) {
-				player.setAllowFlight(false);
-				player.setFlying(false);
-				Utils.sendMessage(sender, ImmutableMap.of("%player%", player.getName()), "player-now-flying-disabled");
-				Utils.sendMessage(player, "now-flying-disabled");
+				CmdSpec.disableFlight(senderPlayer, player);
 				return;
 			}
-			player.setAllowFlight(true);
-			Utils.sendMessage(sender, ImmutableMap.of("%player%", player.getName()), "player-now-flying");
-			Utils.sendMessage(player, "now-flying");
+			CmdSpec.enableFlight(senderPlayer, player);
 		}
 	}
 
-	private void toggleFlySpeed(CommandSender sender, String[] args) {
-		// Check if command sender is a player
-		if (!(sender instanceof Player)) {
-			Utils.sendMessage(sender, "player-only");
+	private void doFlySpeed(@NotNull CommandSender sender, @NotNull String[] args) {
+		Player player = Bukkit.getPlayer(args[1]);
+		Player senderPlayer = (Player) sender;
+
+		if (Cmd.isInvalidSender(sender)) {
 			return;
 		}
-		// Check args length
-		if (args.length > 3) {
-			Utils.sendMessage(sender, "invalid-option");
+
+		if (Cmd.isInvalidPlayer(sender, player)) {
 			return;
 		}
-		//Check args length
+
 		if (args.length == 2) {
-			if (!sender.hasPermission("vitalfly.flyspeed")) {
-				Utils.sendMessage(sender, "no-perms");
+
+			if (Cmd.isNotPermitted(sender, "vitalfly.flyspeed")) {
 				return;
 			}
-			try {
-				if (!(Math.abs(Float.parseFloat(args[1])) <= Math.abs((float) main.getConfig().getInt("flyspeed.limit")))) {
-					Utils.sendMessage(sender, "beyond-limit");
-					return;
-				}
-				((Player) sender).setFlySpeed((Math.abs(Float.parseFloat(args[1]))) / 10);
-				Utils.sendMessage(sender, ImmutableMap.of("%flyspeed%", String.valueOf(Math.abs(Float.parseFloat(args[1])))), "flyspeed-changed");
-				return;
-			} catch (NumberFormatException numberFormatException) {
-				Utils.sendMessage(sender, "invalid-amount");
-				return;
-			}
+			CmdSpec.setFlySpeed(senderPlayer, args[1]);
 		}
-		// Check args length
+
 		if (args.length == 3) {
-			if (!sender.hasPermission("vitalfly.flyspeed.others")) {
-				Utils.sendMessage(sender, "no-perms");
+			if (CmdSpec.isInvalidCmd(sender, player, "vitalfly.flyspeed.others")) {
 				return;
 			}
-			if (Bukkit.getPlayer(args[1]) == null) {
-				Utils.sendMessage(sender, "invalid-player");
-				return;
-			}
-			Player player = Bukkit.getPlayer(args[1]);
-			if (!Objects.requireNonNull(player).isOnline()) {
-				Utils.sendMessage(sender, "not-online");
-				return;
-			}
-			try {
-				if (!(Math.abs(Float.parseFloat(args[2])) <= Math.abs((float) main.getConfig().getInt("flyspeed.limit")))) {
-					Utils.sendMessage(sender, "beyond-limit");
-					return;
-				}
-				player.setFlySpeed((Math.abs(Float.parseFloat(args[2]))) / 10);
-				Utils.sendMessage(sender, ImmutableMap.of(
-								"%player%", player.getName(),
-								"%flyspeed%", String.valueOf(Math.abs(Float.parseFloat(args[2])))),
-						"player-flyspeed-changed");
-				Utils.sendMessage(player, ImmutableMap.of("%flyspeed%", String.valueOf(Math.abs(Float.parseFloat(args[2])))), "flyspeed-changed");
-			} catch (NumberFormatException numberFormatException) {
-				Utils.sendMessage(sender, "invalid-amount");
-			}
+			CmdSpec.setFlySpeed(senderPlayer, args[2], player);
 		}
 
 	}
@@ -184,15 +127,11 @@ public class VitalFlyCmd implements TabExecutor {
 				}
 				if (sender.hasPermission("vitalfly.flyspeed")) {
 					tabComplete.add("flyspeed");
-
 				}
 			}
-			case 2, 3 -> {
+			case 3 -> {
 				if (sender.hasPermission("vitalfly.flyspeed") && args[0].equals("flyspeed")) {
 					tabComplete.addAll(List.of(new String[]{"1", "2", "3", "4", "5", "6", "7", "8", "9"}));
-				}
-				if (sender.hasPermission("vitalfly.fly") && args[0].equals("fly")) {
-					tabComplete = null;
 				}
 			}
 			default -> tabComplete = null;
