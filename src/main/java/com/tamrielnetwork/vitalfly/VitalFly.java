@@ -58,12 +58,14 @@ public final class VitalFly extends JavaPlugin {
 	}
 
 	private void registerListeners() {
+
 		getServer().getPluginManager().registerEvents(new PlayerChangeWorld(), this);
 		getServer().getPluginManager().registerEvents(new PlayerGamemodeChange(), this);
 		getServer().getPluginManager().registerEvents(new PlayerJoin(), this);
 	}
 
 	public Messages getMessages() {
+
 		return messages;
 	}
 

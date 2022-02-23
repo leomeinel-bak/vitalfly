@@ -31,12 +31,14 @@ public class CmdSpec {
 	private static final VitalFly main = JavaPlugin.getPlugin(VitalFly.class);
 
 	public static void disableFlight(Player senderPlayer) {
+
 		senderPlayer.setAllowFlight(false);
 		senderPlayer.setFlying(false);
 		Chat.sendMessage(senderPlayer, "now-flying-disabled");
 	}
 
 	public static void disableFlight(Player senderPlayer, Player player) {
+
 		player.setAllowFlight(false);
 		player.setFlying(false);
 		Chat.sendMessage(senderPlayer, ImmutableMap.of("%player%", player.getName()), "player-now-flying-disabled");
@@ -44,17 +46,20 @@ public class CmdSpec {
 	}
 
 	public static void enableFlight(Player senderPlayer) {
+
 		senderPlayer.setAllowFlight(true);
 		Chat.sendMessage(senderPlayer, "now-flying");
 	}
 
 	public static void enableFlight(Player senderPlayer, Player player) {
+
 		player.setAllowFlight(true);
 		Chat.sendMessage(senderPlayer, ImmutableMap.of("%player%", player.getName()), "player-now-flying");
 		Chat.sendMessage(player, "now-flying");
 	}
 
 	public static void setFlySpeed(@NotNull Player senderPlayer, @NotNull String arg) {
+
 		try {
 			if (isInvalidFlySpeed(senderPlayer, arg)) {
 				return;
@@ -67,6 +72,7 @@ public class CmdSpec {
 	}
 
 	public static void setFlySpeed(@NotNull Player senderPlayer, @NotNull String arg, Player player) {
+
 		try {
 			if (isInvalidFlySpeed(senderPlayer, arg)) {
 				return;
@@ -81,6 +87,7 @@ public class CmdSpec {
 	}
 
 	public static boolean isInvalidCmd(@NotNull CommandSender sender, Player player, @NotNull String perm) {
+
 		if (Cmd.isNotPermitted(sender, perm)) {
 			return true;
 		}
@@ -88,6 +95,7 @@ public class CmdSpec {
 	}
 
 	private static boolean isInvalidFlySpeed(@NotNull CommandSender sender, @NotNull String arg) {
+
 		if (!(Math.abs(Float.parseFloat(arg)) <= Math.abs((float) main.getConfig().getInt("flyspeed.limit")))) {
 			Chat.sendMessage(sender, "beyond-limit");
 			return true;

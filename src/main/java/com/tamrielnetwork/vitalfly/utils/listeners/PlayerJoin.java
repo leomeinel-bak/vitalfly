@@ -19,4 +19,5 @@
 package com.tamrielnetwork.vitalfly.utils.listeners;
 
 public class PlayerJoin {
+
 }

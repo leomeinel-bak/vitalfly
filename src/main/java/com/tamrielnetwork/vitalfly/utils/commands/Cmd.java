@@ -24,7 +24,9 @@ import org.bukkit.entity.Player;
 import org.jetbrains.annotations.NotNull;
 
 public class Cmd {
+
 	public static boolean isArgsLengthEqualTo(@NotNull CommandSender sender, @NotNull String[] args, int length) {
+
 		if (args.length == length) {
 			Chat.sendMessage(sender, "cmd");
 			return true;
@@ -33,6 +35,7 @@ public class Cmd {
 	}
 
 	public static boolean isArgsLengthGreaterThan(@NotNull CommandSender sender, @NotNull String[] args, int length) {
+
 		if (args.length > length) {
 			Chat.sendMessage(sender, "cmd");
 			return true;
@@ -41,6 +44,7 @@ public class Cmd {
 	}
 
 	public static boolean isNotPermitted(@NotNull CommandSender sender, @NotNull String perm) {
+
 		if (!sender.hasPermission(perm)) {
 			Chat.sendMessage(sender, "no-perms");
 			return true;
@@ -49,6 +53,7 @@ public class Cmd {
 	}
 
 	public static boolean isInvalidSender(@NotNull CommandSender sender) {
+
 		if (!(sender instanceof Player)) {
 			Chat.sendMessage(sender, "player-only");
 			return true;
@@ -57,6 +62,7 @@ public class Cmd {
 	}
 
 	public static boolean isInvalidPlayer(@NotNull CommandSender sender, Player player) {
+
 		if (player == null) {
 			Chat.sendMessage(sender, "not-online");
 			return true;
@@ -67,4 +73,5 @@ public class Cmd {
 		}
 		return false;
 	}
+
 }

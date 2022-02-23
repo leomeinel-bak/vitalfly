@@ -35,9 +35,12 @@ public class PlayerGamemodeChange implements Listener {
 
 	@EventHandler
 	public void onGamemodeChange(@NotNull PlayerGameModeChangeEvent event) {
+
 		new BukkitRunnable() {
+
 			@Override
 			public void run() {
+
 				Player player = event.getPlayer();
 				if (!player.hasPermission("vitalfly.fly") || !player.isOnline() || !player.hasPermission("vitalfly.fly.gamemodechange")) {
 					return;

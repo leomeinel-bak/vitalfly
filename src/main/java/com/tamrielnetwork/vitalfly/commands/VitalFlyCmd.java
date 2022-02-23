@@ -89,6 +89,7 @@ public class VitalFlyCmd implements TabExecutor {
 	}
 
 	private void doFlySpeed(@NotNull CommandSender sender, @NotNull String[] args) {
+
 		Player player = Bukkit.getPlayer(args[1]);
 
 		if (Cmd.isInvalidSender(sender)) {
@@ -118,6 +119,7 @@ public class VitalFlyCmd implements TabExecutor {
 
 	@Override
 	public @Nullable List<String> onTabComplete(@NotNull CommandSender sender, @NotNull Command command, @NotNull String alias, @NotNull String[] args) {
+
 		@Nullable List<String> tabComplete = new ArrayList<>();
 		switch (args.length) {
 			case 1 -> {
@@ -137,4 +139,5 @@ public class VitalFlyCmd implements TabExecutor {
 		}
 		return tabComplete;
 	}
+
 }
