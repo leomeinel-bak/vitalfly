@@ -41,7 +41,7 @@ public class VitalFlyCmd implements TabExecutor {
 			return true;
 		}
 
-		switch (args[0]) {
+		switch (args[0].toLowerCase()) {
 			case "fly" -> doFly(sender, args);
 			case "flyspeed" -> doFlySpeed(sender, args);
 			default -> Chat.sendMessage(sender, "invalid-option");
@@ -51,7 +51,6 @@ public class VitalFlyCmd implements TabExecutor {
 	}
 
 	private void doFly(@NotNull CommandSender sender, @NotNull String[] args) {
-		Player senderPlayer = (Player) sender;
 
 		if (Cmd.isArgsLengthGreaterThan(sender, args, 2)) {
 			return;
@@ -59,6 +58,7 @@ public class VitalFlyCmd implements TabExecutor {
 		if (Cmd.isInvalidSender(sender)) {
 			return;
 		}
+		Player senderPlayer = (Player) sender;
 
 		if (args.length == 1) {
 			if (Cmd.isNotPermitted(sender, "vitalfly.fly")) {
@@ -90,15 +90,14 @@ public class VitalFlyCmd implements TabExecutor {
 
 	private void doFlySpeed(@NotNull CommandSender sender, @NotNull String[] args) {
 		Player player = Bukkit.getPlayer(args[1]);
-		Player senderPlayer = (Player) sender;
 
 		if (Cmd.isInvalidSender(sender)) {
 			return;
 		}
-
 		if (Cmd.isInvalidPlayer(sender, player)) {
 			return;
 		}
+		Player senderPlayer = (Player) sender;
 
 		if (args.length == 2) {
 
