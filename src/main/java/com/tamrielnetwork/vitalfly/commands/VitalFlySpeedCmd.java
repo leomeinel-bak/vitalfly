@@ -42,14 +42,10 @@ public class VitalFlySpeedCmd implements CommandExecutor {
 
 	private void doFlySpeed(@NotNull CommandSender sender, @NotNull String[] args) {
 
-		Player player = Bukkit.getPlayer(args[0]);
-
 		if (Cmd.isInvalidSender(sender)) {
 			return;
 		}
-		if (Cmd.isInvalidPlayer(sender, player)) {
-			return;
-		}
+
 		Player senderPlayer = (Player) sender;
 
 		if (args.length == 1) {
@@ -61,6 +57,13 @@ public class VitalFlySpeedCmd implements CommandExecutor {
 		}
 
 		if (args.length == 2) {
+
+			Player player = Bukkit.getPlayer(args[0]);
+
+			if (Cmd.isInvalidPlayer(sender, player)) {
+				return;
+			}
+
 			if (CmdSpec.isInvalidCmd(sender, player, "vitalfly.flyspeed.others")) {
 				return;
 			}
