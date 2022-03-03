@@ -6,9 +6,12 @@ authors: [ Tamriel Network ]
 website: https://tamriel.site
 description: Gives you the ability to fly and toggle fly speed.
 commands:
-  vitalfly:
+  fly:
     description: "Main command"
-    usage: "/vitalfly"
+    usage: "/fly"
+  flyspeed:
+    description: "Main command"
+    usage: "/flyspeed"
 permissions:
   vitalfly.fly:
     description: "Permission to toggle fly"

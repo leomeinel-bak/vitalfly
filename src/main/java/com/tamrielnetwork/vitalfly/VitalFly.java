@@ -19,8 +19,9 @@
 package com.tamrielnetwork.vitalfly;
 
 import com.tamrielnetwork.vitalfly.commands.VitalFlyCmd;
+import com.tamrielnetwork.vitalfly.commands.VitalFlySpeedCmd;
 import com.tamrielnetwork.vitalfly.files.Messages;
-import com.tamrielnetwork.vitalfly.listeners.PlayerChangeWorld;
+import com.tamrielnetwork.vitalfly.listeners.PlayerChangedWorld;
 import com.tamrielnetwork.vitalfly.listeners.PlayerGamemodeChange;
 import com.tamrielnetwork.vitalfly.listeners.PlayerJoin;
 import org.bukkit.Bukkit;
@@ -37,8 +38,7 @@ public final class VitalFly extends JavaPlugin {
 
 		registerListeners();
 
-		Objects.requireNonNull(getCommand("vitalfly")).setExecutor(new VitalFlyCmd());
-		Objects.requireNonNull(getCommand("vitalfly")).setTabCompleter(new VitalFlyCmd());
+		registerCommands();
 
 		saveDefaultConfig();
 
@@ -59,9 +59,16 @@ public final class VitalFly extends JavaPlugin {
 
 	private void registerListeners() {
 
-		getServer().getPluginManager().registerEvents(new PlayerChangeWorld(), this);
+		getServer().getPluginManager().registerEvents(new PlayerChangedWorld(), this);
 		getServer().getPluginManager().registerEvents(new PlayerGamemodeChange(), this);
 		getServer().getPluginManager().registerEvents(new PlayerJoin(), this);
+	}
+
+	private void registerCommands() {
+
+		Objects.requireNonNull(getCommand("fly")).setExecutor(new VitalFlyCmd());
+		Objects.requireNonNull(getCommand("flyspeed")).setExecutor(new VitalFlySpeedCmd());
+
 	}
 
 	public Messages getMessages() {

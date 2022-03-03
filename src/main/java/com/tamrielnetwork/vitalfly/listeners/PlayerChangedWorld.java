@@ -25,10 +25,10 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerChangedWorldEvent;
 import org.jetbrains.annotations.NotNull;
 
-public class PlayerChangeWorld implements Listener {
+public class PlayerChangedWorld implements Listener {
 
 	@EventHandler
-	public void onPlayerChangeWorld(@NotNull PlayerChangedWorldEvent event) {
+	public void onPlayerChangedWorld(@NotNull PlayerChangedWorldEvent event) {
 
 		Player player = event.getPlayer();
 		if (!player.hasPermission("vitalfly.fly") || !player.hasPermission("vitalfly.fly.worldchange")) {

@@ -27,52 +27,46 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 import org.jetbrains.annotations.NotNull;
 
-public class VitalFlyCmd implements CommandExecutor {
+public class VitalFlySpeedCmd implements CommandExecutor {
 
 	@Override
 	public boolean onCommand(@NotNull CommandSender sender, @NotNull Command command, @NotNull String label, @NotNull String[] args) {
 
-		if (Cmd.isArgsLengthGreaterThan(sender, args, 1)) {
+		if (Cmd.isArgsLengthEqualTo(sender, args, 0) || Cmd.isArgsLengthGreaterThan(sender, args, 2)) {
 			return true;
 		}
-		doFly(sender, args);
+		doFlySpeed(sender, args);
 
 		return true;
 	}
 
-	private void doFly(@NotNull CommandSender sender, @NotNull String[] args) {
+	private void doFlySpeed(@NotNull CommandSender sender, @NotNull String[] args) {
+
+		Player player = Bukkit.getPlayer(args[0]);
 
 		if (Cmd.isInvalidSender(sender)) {
 			return;
 		}
-		Player senderPlayer = (Player) sender;
-
-		if (args.length == 0) {
-			if (Cmd.isNotPermitted(sender, "vitalfly.fly")) {
-				return;
-			}
-			if (senderPlayer.getAllowFlight()) {
-				CmdSpec.disableFlight(senderPlayer);
-				return;
-			}
-			CmdSpec.enableFlight(senderPlayer);
+		if (Cmd.isInvalidPlayer(sender, player)) {
 			return;
 		}
+		Player senderPlayer = (Player) sender;
 
 		if (args.length == 1) {
-			Player player = Bukkit.getPlayer(args[0]);
 
-			if (CmdSpec.isInvalidCmd(sender, player, "vitalfly.fly.others")) {
+			if (Cmd.isNotPermitted(sender, "vitalfly.flyspeed")) {
 				return;
 			}
-
-			assert player != null;
-			if (player.getAllowFlight()) {
-				CmdSpec.disableFlight(senderPlayer, player);
-				return;
-			}
-			CmdSpec.enableFlight(senderPlayer, player);
+			CmdSpec.setFlySpeed(senderPlayer, args[0]);
 		}
+
+		if (args.length == 2) {
+			if (CmdSpec.isInvalidCmd(sender, player, "vitalfly.flyspeed.others")) {
+				return;
+			}
+			CmdSpec.setFlySpeed(senderPlayer, args[1], player);
+		}
+
 	}
 
 }
