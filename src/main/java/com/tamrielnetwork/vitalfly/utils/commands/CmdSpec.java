@@ -25,6 +25,8 @@ import org.bukkit.entity.Player;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.jetbrains.annotations.NotNull;
 
+import java.util.Map;
+
 public class CmdSpec {
 
 	private static final String PLAYER = "%player%";
@@ -47,7 +49,7 @@ public class CmdSpec {
 
 		player.setAllowFlight(false);
 		player.setFlying(false);
-		Chat.sendMessage(senderPlayer, java.util.Map.of(PLAYER, player.getName()), "player-now-flying-disabled");
+		Chat.sendMessage(senderPlayer, Map.of(PLAYER, player.getName()), "player-now-flying-disabled");
 		Chat.sendMessage(player, "now-flying-disabled");
 	}
 
@@ -60,7 +62,7 @@ public class CmdSpec {
 	public static void enableFlight(Player senderPlayer, Player player) {
 
 		player.setAllowFlight(true);
-		Chat.sendMessage(senderPlayer, java.util.Map.of(PLAYER, player.getName()), "player-now-flying");
+		Chat.sendMessage(senderPlayer, Map.of(PLAYER, player.getName()), "player-now-flying");
 		Chat.sendMessage(player, "now-flying");
 	}
 
@@ -71,7 +73,7 @@ public class CmdSpec {
 				return;
 			}
 			senderPlayer.setFlySpeed((Math.abs(Float.parseFloat(arg))) / 10);
-			Chat.sendMessage(senderPlayer, java.util.Map.of(FLYSPEED, String.valueOf(Math.abs(Float.parseFloat(arg)))), "flyspeed-changed");
+			Chat.sendMessage(senderPlayer, Map.of(FLYSPEED, String.valueOf(Math.abs(Float.parseFloat(arg)))), "flyspeed-changed");
 		} catch (NumberFormatException numberFormatException) {
 			Chat.sendMessage(senderPlayer, "invalid-amount");
 		}
@@ -85,8 +87,8 @@ public class CmdSpec {
 			}
 			player.setFlySpeed((Math.abs(Float.parseFloat(arg))) / 10);
 			String flySpeed = String.valueOf(Math.abs(Float.parseFloat(arg)));
-			Chat.sendMessage(senderPlayer, java.util.Map.of(PLAYER, player.getName(), FLYSPEED, flySpeed), "player-flyspeed-changed");
-			Chat.sendMessage(player, java.util.Map.of(FLYSPEED, flySpeed), "flyspeed-changed");
+			Chat.sendMessage(senderPlayer, Map.of(PLAYER, player.getName(), FLYSPEED, flySpeed), "player-flyspeed-changed");
+			Chat.sendMessage(player, Map.of(FLYSPEED, flySpeed), "flyspeed-changed");
 		} catch (NumberFormatException numberFormatException) {
 			Chat.sendMessage(senderPlayer, "invalid-amount");
 		}
