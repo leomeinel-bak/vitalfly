@@ -45,7 +45,8 @@
       <a href="#getting-started">Getting Started</a>
       <ul>
         <li><a href="#commands-and-permissions">Commands and Permissions</a></li>
-        <li><a href="#configuration">Configuration</a></li>
+        <li><a href="#configuration - config.yml">Configuration</a></li>
+		<li><a href="#configuration - messages.yml">Configuration</a></li>
       </ul>
     </li>
     <li><a href="#roadmap">Roadmap</a></li>
@@ -89,22 +90,22 @@ To get the plugin running on your server follow these simple steps.
 
 1. Permission: `vitalfly.fly`
 
-* Command: `/vitalfly fly`
+* Command: `/fly`
 * Description: Toggle fly
 
 2. Permission: `vitalfly.fly.others`
 
-* Command: `/vitalfly fly <player>`
+* Command: `/fly <player>`
 * Description: Toggle fly for other players
 
 3. Permission: `vitalfly.flyspeed`
 
-* Command: `/vitalfly flyspeed <flyspeed>`
+* Command: `/flyspeed <flyspeed>`
 * Description: Set flyspeed
 
 4. Permission: `vitalfly.flyspeed.others`
 
-* Command: `/vitalfly flyspeed <player> <flyspeed>`
+* Command: `/flyspeed <player> <flyspeed>`
 * Description: Set flyspeed for other players
 
 5. Permission: `vitalfly.fly.worldchange`
@@ -124,27 +125,26 @@ To get the plugin running on your server follow these simple steps.
 ```
 flyspeed:
   # Values from 1-10
-  # Don't use floating-point numbers
+  # Don't use negative or floating-point numbers
   limit: 10
 ```
 
 ### Configuration - messages.yml
 
 ```
-no-args: "&7Enter this command: &b/vitalfly fly/flyspeed <player> <flyspeed>"
+cmd: "&fUsage: &b/fly <player> &for &b/flyspeed <player> <flyspeed>"
+now-flying: "&fFly toggled &aON"
+no-perms: "&cYou don't have enough permissions!"
 player-only: "&cThis command can only be executed by players!"
-invalid-option: "&cInvalid option!"
-invalid-player: "&cInvalid player!"
 not-online: "&cPlayer is not online!"
-beyond-limit: "&cThe number is too high!"
-no-perms: "&7You don't have enough permissions!"
+same-player: "&cYou can't use that on yourself!"
+now-flying-disabled: "&fFly toggled &cOFF"
+player-now-flying-disabled: "&fFly toggled &cOFF &ffor &b%player%"
+player-now-flying: "&fFly toggled &aON &ffor &b%player%"
+flyspeed-changed: "&fFlySpeed set to &b%flyspeed%"
 invalid-amount: "&cInvalid amount!"
-now-flying: "&7Fly toggled &aON"
-now-flying-disabled: "&7Fly toggled &cOFF"
-player-now-flying: "&7Fly toggled &aON &7for &b%player%"
-player-now-flying-disabled: "&7Fly toggled &cOFF &7for &b%player%"
-flyspeed-changed: "&7FlySpeed set to &b%flyspeed%&7"
-player-flyspeed-changed: "&7Flyspeed set to &b%flyspeed% &7for &b%player%&7"
+player-flyspeed-changed: "&fFlyspeed set to &b%flyspeed% &ffor &b%player%"
+beyond-limit: "&cThe number is too high!"
 ```
 
 <!-- ROADMAP -->
