@@ -25,6 +25,11 @@ import org.jetbrains.annotations.NotNull;
 
 public class Cmd {
 
+	private Cmd() {
+
+		throw new IllegalStateException("Utility class");
+	}
+
 	public static boolean isArgsLengthEqualTo(@NotNull CommandSender sender, @NotNull String[] args, int length) {
 
 		if (args.length == length) {

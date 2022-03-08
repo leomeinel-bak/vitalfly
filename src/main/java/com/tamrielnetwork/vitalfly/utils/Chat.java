@@ -29,9 +29,14 @@ import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 
-public class Chat {
+public final class Chat {
 
 	private static final VitalFly main = JavaPlugin.getPlugin(VitalFly.class);
+
+	private Chat() {
+
+		throw new IllegalStateException("Utility class");
+	}
 
 	public static void sendMessage(@NotNull CommandSender player, @NotNull Map<String, String> placeholders, @NotNull String message) {
 

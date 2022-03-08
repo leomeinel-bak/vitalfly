@@ -33,10 +33,9 @@ public class VitalFlySpeedCmd implements CommandExecutor {
 	public boolean onCommand(@NotNull CommandSender sender, @NotNull Command command, @NotNull String label, @NotNull String[] args) {
 
 		if (Cmd.isArgsLengthEqualTo(sender, args, 0) || Cmd.isArgsLengthGreaterThan(sender, args, 2)) {
-			return true;
+			return false;
 		}
 		doFlySpeed(sender, args);
-
 		return true;
 	}
 

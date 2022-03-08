@@ -18,7 +18,6 @@
 
 package com.tamrielnetwork.vitalfly.utils.commands;
 
-import com.google.common.collect.ImmutableMap;
 import com.tamrielnetwork.vitalfly.VitalFly;
 import com.tamrielnetwork.vitalfly.utils.Chat;
 import org.bukkit.command.CommandSender;
@@ -28,7 +27,14 @@ import org.jetbrains.annotations.NotNull;
 
 public class CmdSpec {
 
+	private static final String PLAYER = "%player%";
+	private static final String FLYSPEED = "%flyspeed%";
 	private static final VitalFly main = JavaPlugin.getPlugin(VitalFly.class);
+
+	private CmdSpec() {
+
+		throw new IllegalStateException("Utility class");
+	}
 
 	public static void disableFlight(Player senderPlayer) {
 
@@ -41,7 +47,7 @@ public class CmdSpec {
 
 		player.setAllowFlight(false);
 		player.setFlying(false);
-		Chat.sendMessage(senderPlayer, ImmutableMap.of("%player%", player.getName()), "player-now-flying-disabled");
+		Chat.sendMessage(senderPlayer, java.util.Map.of(PLAYER, player.getName()), "player-now-flying-disabled");
 		Chat.sendMessage(player, "now-flying-disabled");
 	}
 
@@ -54,7 +60,7 @@ public class CmdSpec {
 	public static void enableFlight(Player senderPlayer, Player player) {
 
 		player.setAllowFlight(true);
-		Chat.sendMessage(senderPlayer, ImmutableMap.of("%player%", player.getName()), "player-now-flying");
+		Chat.sendMessage(senderPlayer, java.util.Map.of(PLAYER, player.getName()), "player-now-flying");
 		Chat.sendMessage(player, "now-flying");
 	}
 
@@ -65,7 +71,7 @@ public class CmdSpec {
 				return;
 			}
 			senderPlayer.setFlySpeed((Math.abs(Float.parseFloat(arg))) / 10);
-			Chat.sendMessage(senderPlayer, ImmutableMap.of("%flyspeed%", String.valueOf(Math.abs(Float.parseFloat(arg)))), "flyspeed-changed");
+			Chat.sendMessage(senderPlayer, java.util.Map.of(FLYSPEED, String.valueOf(Math.abs(Float.parseFloat(arg)))), "flyspeed-changed");
 		} catch (NumberFormatException numberFormatException) {
 			Chat.sendMessage(senderPlayer, "invalid-amount");
 		}
@@ -79,8 +85,8 @@ public class CmdSpec {
 			}
 			player.setFlySpeed((Math.abs(Float.parseFloat(arg))) / 10);
 			String flySpeed = String.valueOf(Math.abs(Float.parseFloat(arg)));
-			Chat.sendMessage(senderPlayer, ImmutableMap.of("%player%", player.getName(), "%flyspeed%", flySpeed), "player-flyspeed-changed");
-			Chat.sendMessage(player, ImmutableMap.of("%flyspeed%", flySpeed), "flyspeed-changed");
+			Chat.sendMessage(senderPlayer, java.util.Map.of(PLAYER, player.getName(), FLYSPEED, flySpeed), "player-flyspeed-changed");
+			Chat.sendMessage(player, java.util.Map.of(FLYSPEED, flySpeed), "flyspeed-changed");
 		} catch (NumberFormatException numberFormatException) {
 			Chat.sendMessage(senderPlayer, "invalid-amount");
 		}
@@ -96,7 +102,7 @@ public class CmdSpec {
 
 	private static boolean isInvalidFlySpeed(@NotNull CommandSender sender, @NotNull String arg) {
 
-		if (!(Math.abs(Float.parseFloat(arg)) <= Math.abs((float) main.getConfig().getInt("flyspeed.limit")))) {
+		if (Math.abs(Float.parseFloat(arg)) >= Math.abs((float) main.getConfig().getInt("flyspeed.limit"))) {
 			Chat.sendMessage(sender, "beyond-limit");
 			return true;
 		}
