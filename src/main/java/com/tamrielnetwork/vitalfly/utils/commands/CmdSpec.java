@@ -104,7 +104,7 @@ public class CmdSpec {
 
 	private static boolean isInvalidFlySpeed(@NotNull CommandSender sender, @NotNull String arg) {
 
-		if (Math.abs(Float.parseFloat(arg)) >= Math.abs((float) main.getConfig().getInt("flyspeed.limit"))) {
+		if (Math.abs(Float.parseFloat(arg)) > Math.abs((float) main.getConfig().getInt("flyspeed.limit"))) {
 			Chat.sendMessage(sender, "beyond-limit");
 			return true;
 		}
