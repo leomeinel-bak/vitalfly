@@ -29,23 +29,21 @@ import org.jetbrains.annotations.NotNull;
 
 import static org.bukkit.GameMode.SURVIVAL;
 
-public class PlayerGamemodeChange implements Listener {
+public class PlayerGamemodeChange
+		implements Listener {
 
 	private final VitalFly main = JavaPlugin.getPlugin(VitalFly.class);
 
 	@EventHandler
 	public void onGamemodeChange(@NotNull PlayerGameModeChangeEvent event) {
-
 		new BukkitRunnable() {
 
 			@Override
 			public void run() {
-
 				Player player = event.getPlayer();
 				if (!player.hasPermission("vitalfly.fly") || !player.isOnline() || !player.hasPermission("vitalfly.fly.gamemodechange")) {
 					return;
 				}
-
 				if (event.getNewGameMode() == SURVIVAL) {
 					player.setAllowFlight(true);
 					player.setFlying(true);
@@ -53,5 +51,4 @@ public class PlayerGamemodeChange implements Listener {
 			}
 		}.runTaskLater(main, 1);
 	}
-
 }
