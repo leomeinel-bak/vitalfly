@@ -67,7 +67,8 @@ public class CmdSpec {
 				return;
 			}
 			senderPlayer.setFlySpeed((Math.abs(Float.parseFloat(arg))) / 10);
-			Chat.sendMessage(senderPlayer, Map.of(FLYSPEED, String.valueOf(Math.abs(Float.parseFloat(arg)))), "flyspeed-changed");
+			Chat.sendMessage(senderPlayer, Map.of(FLYSPEED, String.valueOf(Math.abs(Float.parseFloat(arg)))),
+			                 "flyspeed-changed");
 		}
 		catch (NumberFormatException numberFormatException) {
 			Chat.sendMessage(senderPlayer, "invalid-amount");

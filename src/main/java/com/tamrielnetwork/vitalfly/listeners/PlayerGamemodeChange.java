@@ -41,7 +41,8 @@ public class PlayerGamemodeChange
 			@Override
 			public void run() {
 				Player player = event.getPlayer();
-				if (!player.hasPermission("vitalfly.fly") || !player.isOnline() || !player.hasPermission("vitalfly.fly.gamemodechange")) {
+				if (!player.hasPermission("vitalfly.fly") || !player.isOnline() || !player.hasPermission(
+						"vitalfly.fly.gamemodechange")) {
 					return;
 				}
 				if (event.getNewGameMode() == SURVIVAL) {
