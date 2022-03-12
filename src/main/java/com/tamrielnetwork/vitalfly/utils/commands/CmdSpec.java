@@ -82,7 +82,8 @@ public class CmdSpec {
 			}
 			player.setFlySpeed((Math.abs(Float.parseFloat(arg))) / 10);
 			String flySpeed = String.valueOf(Math.abs(Float.parseFloat(arg)));
-			Chat.sendMessage(senderPlayer, Map.of(PLAYER, player.getName(), FLYSPEED, flySpeed), "player-flyspeed-changed");
+			Chat.sendMessage(senderPlayer, Map.of(PLAYER, player.getName(), FLYSPEED, flySpeed),
+			                 "player-flyspeed-changed");
 			Chat.sendMessage(player, Map.of(FLYSPEED, flySpeed), "flyspeed-changed");
 		}
 		catch (NumberFormatException numberFormatException) {
