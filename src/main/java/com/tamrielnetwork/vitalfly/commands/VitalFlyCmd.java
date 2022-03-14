@@ -18,6 +18,7 @@
 
 package com.tamrielnetwork.vitalfly.commands;
 
+import com.tamrielnetwork.vitalfly.utils.Chat;
 import com.tamrielnetwork.vitalfly.utils.commands.Cmd;
 import com.tamrielnetwork.vitalfly.utils.commands.CmdSpec;
 import org.bukkit.Bukkit;
@@ -26,6 +27,8 @@ import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 import org.jetbrains.annotations.NotNull;
+
+import java.util.Map;
 
 public class VitalFlyCmd
 		implements CommandExecutor {
@@ -50,10 +53,13 @@ public class VitalFlyCmd
 				return;
 			}
 			if (senderPlayer.getAllowFlight()) {
-				CmdSpec.disableFlight(senderPlayer);
+				senderPlayer.setAllowFlight(false);
+				senderPlayer.setFlying(false);
+				Chat.sendMessage(senderPlayer, "now-flying-disabled");
 				return;
 			}
-			CmdSpec.enableFlight(senderPlayer);
+			senderPlayer.setAllowFlight(true);
+			Chat.sendMessage(senderPlayer, "now-flying");
 			return;
 		}
 		if (args.length == 1) {
@@ -63,10 +69,15 @@ public class VitalFlyCmd
 			}
 			assert player != null;
 			if (player.getAllowFlight()) {
-				CmdSpec.disableFlight(senderPlayer, player);
+				player.setAllowFlight(false);
+				player.setFlying(false);
+				Chat.sendMessage(senderPlayer, Map.of("%player%", player.getName()), "player-now-flying-disabled");
+				Chat.sendMessage(player, "now-flying-disabled");
 				return;
 			}
-			CmdSpec.enableFlight(senderPlayer, player);
+			player.setAllowFlight(true);
+			Chat.sendMessage(senderPlayer, Map.of("%player%", player.getName()), "player-now-flying");
+			Chat.sendMessage(player, "now-flying");
 		}
 	}
 }

@@ -37,30 +37,6 @@ public class CmdSpec {
 		throw new IllegalStateException("Utility class");
 	}
 
-	public static void disableFlight(Player senderPlayer) {
-		senderPlayer.setAllowFlight(false);
-		senderPlayer.setFlying(false);
-		Chat.sendMessage(senderPlayer, "now-flying-disabled");
-	}
-
-	public static void disableFlight(Player senderPlayer, Player player) {
-		player.setAllowFlight(false);
-		player.setFlying(false);
-		Chat.sendMessage(senderPlayer, Map.of(PLAYER, player.getName()), "player-now-flying-disabled");
-		Chat.sendMessage(player, "now-flying-disabled");
-	}
-
-	public static void enableFlight(Player senderPlayer) {
-		senderPlayer.setAllowFlight(true);
-		Chat.sendMessage(senderPlayer, "now-flying");
-	}
-
-	public static void enableFlight(Player senderPlayer, Player player) {
-		player.setAllowFlight(true);
-		Chat.sendMessage(senderPlayer, Map.of(PLAYER, player.getName()), "player-now-flying");
-		Chat.sendMessage(player, "now-flying");
-	}
-
 	public static void setFlySpeed(@NotNull Player senderPlayer, @NotNull String arg) {
 		try {
 			if (isInvalidFlySpeed(senderPlayer, arg)) {
@@ -92,10 +68,7 @@ public class CmdSpec {
 	}
 
 	public static boolean isInvalidCmd(@NotNull CommandSender sender, Player player, @NotNull String perm) {
-		if (Cmd.isNotPermitted(sender, perm)) {
-			return true;
-		}
-		return Cmd.isInvalidPlayer(sender, player);
+		return Cmd.isNotPermitted(sender, perm) || Cmd.isInvalidPlayer(sender, player);
 	}
 
 	private static boolean isInvalidFlySpeed(@NotNull CommandSender sender, @NotNull String arg) {
