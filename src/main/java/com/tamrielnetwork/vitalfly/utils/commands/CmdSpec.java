@@ -29,7 +29,6 @@ import java.util.Map;
 
 public class CmdSpec {
 
-	private static final String PLAYER = "%player%";
 	private static final String FLYSPEED = "%flyspeed%";
 	private static final VitalFly main = JavaPlugin.getPlugin(VitalFly.class);
 
@@ -38,33 +37,22 @@ public class CmdSpec {
 	}
 
 	public static void setFlySpeed(@NotNull Player senderPlayer, @NotNull String arg) {
-		try {
-			if (isInvalidFlySpeed(senderPlayer, arg)) {
-				return;
-			}
-			senderPlayer.setFlySpeed((Math.abs(Float.parseFloat(arg))) / 10);
-			Chat.sendMessage(senderPlayer, Map.of(FLYSPEED, String.valueOf(Math.abs(Float.parseFloat(arg)))),
-			                 "flyspeed-changed");
+		if (isInvalidFlySpeed(senderPlayer, arg)) {
+			return;
 		}
-		catch (NumberFormatException numberFormatException) {
-			Chat.sendMessage(senderPlayer, "invalid-amount");
-		}
+		senderPlayer.setFlySpeed(Float.parseFloat(arg) / 10);
+		Chat.sendMessage(senderPlayer, Map.of(FLYSPEED, String.valueOf(Float.parseFloat(arg))), "flyspeed-changed");
 	}
 
 	public static void setFlySpeed(@NotNull Player senderPlayer, @NotNull String arg, Player player) {
-		try {
-			if (isInvalidFlySpeed(senderPlayer, arg)) {
-				return;
-			}
-			player.setFlySpeed((Math.abs(Float.parseFloat(arg))) / 10);
-			String flySpeed = String.valueOf(Math.abs(Float.parseFloat(arg)));
-			Chat.sendMessage(senderPlayer, Map.of(PLAYER, player.getName(), FLYSPEED, flySpeed),
-			                 "player-flyspeed-changed");
-			Chat.sendMessage(player, Map.of(FLYSPEED, flySpeed), "flyspeed-changed");
+		if (isInvalidFlySpeed(senderPlayer, arg)) {
+			return;
 		}
-		catch (NumberFormatException numberFormatException) {
-			Chat.sendMessage(senderPlayer, "invalid-amount");
-		}
+		player.setFlySpeed(Float.parseFloat(arg) / 10);
+		String flySpeed = String.valueOf(Float.parseFloat(arg));
+		Chat.sendMessage(senderPlayer, Map.of("%player%", player.getName(), FLYSPEED, flySpeed),
+		                 "player-flyspeed-changed");
+		Chat.sendMessage(player, Map.of(FLYSPEED, flySpeed), "flyspeed-changed");
 	}
 
 	public static boolean isInvalidCmd(@NotNull CommandSender sender, Player player, @NotNull String perm) {
@@ -72,8 +60,12 @@ public class CmdSpec {
 	}
 
 	private static boolean isInvalidFlySpeed(@NotNull CommandSender sender, @NotNull String arg) {
-		if (Math.abs(Float.parseFloat(arg)) > Math.abs((float) main.getConfig()
-		                                                           .getInt("flyspeed.limit"))) {
+		if (Float.isNaN(Float.parseFloat(arg)) || Float.parseFloat(arg) <= 0) {
+			Chat.sendMessage(sender, "invalid-amount");
+			return true;
+		}
+		if (Float.parseFloat(arg) > main.getConfig()
+		                                .getInt("flyspeed.limit")) {
 			Chat.sendMessage(sender, "beyond-limit");
 			return true;
 		}
