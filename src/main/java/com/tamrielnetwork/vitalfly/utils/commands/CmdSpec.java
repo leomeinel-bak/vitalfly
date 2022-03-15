@@ -40,19 +40,20 @@ public class CmdSpec {
 		if (isInvalidFlySpeed(senderPlayer, arg)) {
 			return;
 		}
-		senderPlayer.setFlySpeed(Float.parseFloat(arg) / 10);
-		Chat.sendMessage(senderPlayer, Map.of(FLYSPEED, String.valueOf(Float.parseFloat(arg))), "flyspeed-changed");
+		float flySpeed = Float.parseFloat(arg);
+		senderPlayer.setFlySpeed(flySpeed / 10);
+		Chat.sendMessage(senderPlayer, Map.of(FLYSPEED, String.valueOf(flySpeed)), "flyspeed-changed");
 	}
 
 	public static void setFlySpeed(@NotNull Player senderPlayer, @NotNull String arg, Player player) {
 		if (isInvalidFlySpeed(senderPlayer, arg)) {
 			return;
 		}
-		player.setFlySpeed(Float.parseFloat(arg) / 10);
-		String flySpeed = String.valueOf(Float.parseFloat(arg));
-		Chat.sendMessage(senderPlayer, Map.of("%player%", player.getName(), FLYSPEED, flySpeed),
+		float flySpeed = Float.parseFloat(arg);
+		player.setFlySpeed(flySpeed / 10);
+		Chat.sendMessage(senderPlayer, Map.of("%player%", player.getName(), FLYSPEED, String.valueOf(flySpeed)),
 		                 "player-flyspeed-changed");
-		Chat.sendMessage(player, Map.of(FLYSPEED, flySpeed), "flyspeed-changed");
+		Chat.sendMessage(player, Map.of(FLYSPEED, String.valueOf(flySpeed)), "flyspeed-changed");
 	}
 
 	public static boolean isInvalidCmd(@NotNull CommandSender sender, Player player, @NotNull String perm) {
@@ -60,15 +61,22 @@ public class CmdSpec {
 	}
 
 	private static boolean isInvalidFlySpeed(@NotNull CommandSender sender, @NotNull String arg) {
-		if (Float.isNaN(Float.parseFloat(arg)) || Float.parseFloat(arg) <= 0) {
+		try {
+			float flySpeed = Float.parseFloat(arg);
+			if (flySpeed <= 0) {
+				Chat.sendMessage(sender, "invalid-amount");
+				return true;
+			}
+			if (flySpeed > main.getConfig()
+			                   .getInt("flyspeed.limit")) {
+				Chat.sendMessage(sender, "beyond-limit");
+				return true;
+			}
+			return false;
+		}
+		catch (NumberFormatException numberFormatException) {
 			Chat.sendMessage(sender, "invalid-amount");
 			return true;
 		}
-		if (Float.parseFloat(arg) > main.getConfig()
-		                                .getInt("flyspeed.limit")) {
-			Chat.sendMessage(sender, "beyond-limit");
-			return true;
-		}
-		return false;
 	}
 }
