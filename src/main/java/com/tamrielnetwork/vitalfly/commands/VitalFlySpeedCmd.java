@@ -53,10 +53,8 @@ public class VitalFlySpeedCmd
 		}
 		if (args.length == 2) {
 			Player player = Bukkit.getPlayer(args[0]);
-			if (Cmd.isInvalidPlayer(sender, player)) {
-				return;
-			}
-			if (CmdSpec.isInvalidCmd(sender, player, "vitalfly.flyspeed.others")) {
+			if (Cmd.isInvalidPlayer(sender, player) || CmdSpec.isInvalidCmd(sender, player,
+			                                                                "vitalfly.flyspeed.others")) {
 				return;
 			}
 			CmdSpec.setFlySpeed(senderPlayer, args[1], player);
