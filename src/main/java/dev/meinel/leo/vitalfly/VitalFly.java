@@ -16,14 +16,14 @@
  * along with this program. If not, see https://github.com/LeoMeinel/VitalFly/blob/main/LICENSE
  */
 
-package com.tamrielnetwork.vitalfly;
+package dev.meinel.leo.vitalfly;
 
-import com.tamrielnetwork.vitalfly.commands.VitalFlyCmd;
-import com.tamrielnetwork.vitalfly.commands.VitalFlySpeedCmd;
-import com.tamrielnetwork.vitalfly.files.Messages;
-import com.tamrielnetwork.vitalfly.listeners.PlayerChangedWorld;
-import com.tamrielnetwork.vitalfly.listeners.PlayerGamemodeChange;
-import com.tamrielnetwork.vitalfly.listeners.PlayerJoin;
+import dev.meinel.leo.vitalfly.commands.VitalFlyCmd;
+import dev.meinel.leo.vitalfly.commands.VitalFlySpeedCmd;
+import dev.meinel.leo.vitalfly.files.Messages;
+import dev.meinel.leo.vitalfly.listeners.PlayerChangedWorld;
+import dev.meinel.leo.vitalfly.listeners.PlayerGamemodeChange;
+import dev.meinel.leo.vitalfly.listeners.PlayerJoin;
 import org.bukkit.Bukkit;
 import org.bukkit.plugin.java.JavaPlugin;
 

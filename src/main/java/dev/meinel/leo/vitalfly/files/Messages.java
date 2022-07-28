@@ -16,9 +16,9 @@
  * along with this program. If not, see https://github.com/LeoMeinel/VitalFly/blob/main/LICENSE
  */
 
-package com.tamrielnetwork.vitalfly.files;
+package dev.meinel.leo.vitalfly.files;
 
-import com.tamrielnetwork.vitalfly.VitalFly;
+import dev.meinel.leo.vitalfly.VitalFly;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.plugin.java.JavaPlugin;

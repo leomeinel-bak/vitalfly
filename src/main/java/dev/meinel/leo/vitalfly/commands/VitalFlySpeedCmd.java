@@ -16,11 +16,10 @@
  * along with this program. If not, see https://github.com/LeoMeinel/VitalFly/blob/main/LICENSE
  */
 
-package com.tamrielnetwork.vitalfly.commands;
+package dev.meinel.leo.vitalfly.commands;
 
-import com.tamrielnetwork.vitalfly.utils.Chat;
-import com.tamrielnetwork.vitalfly.utils.commands.Cmd;
-import com.tamrielnetwork.vitalfly.utils.commands.CmdSpec;
+import dev.meinel.leo.vitalfly.utils.commands.Cmd;
+import dev.meinel.leo.vitalfly.utils.commands.CmdSpec;
 import org.bukkit.Bukkit;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
@@ -28,56 +27,37 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 import org.jetbrains.annotations.NotNull;
 
-import java.util.Map;
-
-public class VitalFlyCmd
+public class VitalFlySpeedCmd
 		implements CommandExecutor {
 
 	@Override
 	public boolean onCommand(@NotNull CommandSender sender, @NotNull Command command, @NotNull String label,
 	                         @NotNull String[] args) {
-		if (Cmd.isArgsLengthGreaterThan(sender, args, 1)) {
+		if (Cmd.isArgsLengthEqualTo(sender, args, 0) || Cmd.isArgsLengthGreaterThan(sender, args, 2)) {
 			return false;
 		}
-		doFly(sender, args);
+		doFlySpeed(sender, args);
 		return true;
 	}
 
-	private void doFly(@NotNull CommandSender sender, @NotNull String[] args) {
+	private void doFlySpeed(@NotNull CommandSender sender, @NotNull String[] args) {
 		if (Cmd.isInvalidSender(sender)) {
 			return;
 		}
 		Player senderPlayer = (Player) sender;
-		if (args.length == 0) {
-			if (Cmd.isNotPermitted(sender, "vitalfly.fly")) {
-				return;
-			}
-			if (senderPlayer.getAllowFlight()) {
-				senderPlayer.setAllowFlight(false);
-				senderPlayer.setFlying(false);
-				Chat.sendMessage(senderPlayer, "now-flying-disabled");
-				return;
-			}
-			senderPlayer.setAllowFlight(true);
-			Chat.sendMessage(senderPlayer, "now-flying");
-			return;
-		}
 		if (args.length == 1) {
+			if (Cmd.isNotPermitted(sender, "vitalfly.flyspeed")) {
+				return;
+			}
+			CmdSpec.setFlySpeed(senderPlayer, args[0]);
+		}
+		if (args.length == 2) {
 			Player player = Bukkit.getPlayer(args[0]);
-			if (CmdSpec.isInvalidCmd(sender, player, "vitalfly.fly.others")) {
+			if (Cmd.isInvalidPlayer(sender, player) || CmdSpec.isInvalidCmd(sender, player,
+			                                                                "vitalfly.flyspeed.others")) {
 				return;
 			}
-			assert player != null;
-			if (player.getAllowFlight()) {
-				player.setAllowFlight(false);
-				player.setFlying(false);
-				Chat.sendMessage(senderPlayer, Map.of("%player%", player.getName()), "player-now-flying-disabled");
-				Chat.sendMessage(player, "now-flying-disabled");
-				return;
-			}
-			player.setAllowFlight(true);
-			Chat.sendMessage(senderPlayer, Map.of("%player%", player.getName()), "player-now-flying");
-			Chat.sendMessage(player, "now-flying");
+			CmdSpec.setFlySpeed(senderPlayer, args[1], player);
 		}
 	}
 }

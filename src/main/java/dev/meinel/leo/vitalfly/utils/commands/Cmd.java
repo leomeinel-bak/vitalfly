@@ -16,9 +16,9 @@
  * along with this program. If not, see https://github.com/LeoMeinel/VitalFly/blob/main/LICENSE
  */
 
-package com.tamrielnetwork.vitalfly.utils.commands;
+package dev.meinel.leo.vitalfly.utils.commands;
 
-import com.tamrielnetwork.vitalfly.utils.Chat;
+import dev.meinel.leo.vitalfly.utils.Chat;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 import org.jetbrains.annotations.NotNull;

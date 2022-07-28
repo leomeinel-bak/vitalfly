@@ -16,38 +16,25 @@
  * along with this program. If not, see https://github.com/LeoMeinel/VitalFly/blob/main/LICENSE
  */
 
-package com.tamrielnetwork.vitalfly.listeners;
+package dev.meinel.leo.vitalfly.listeners;
 
-import org.bukkit.Location;
+import dev.meinel.leo.vitalfly.utils.Chat;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
-import org.bukkit.event.player.PlayerJoinEvent;
+import org.bukkit.event.player.PlayerChangedWorldEvent;
 import org.jetbrains.annotations.NotNull;
 
-import static org.bukkit.Material.AIR;
-
-public class PlayerJoin
+public class PlayerChangedWorld
 		implements Listener {
 
 	@EventHandler
-	public void onPlayerJoin(@NotNull PlayerJoinEvent event) {
+	public void onPlayerChangedWorld(@NotNull PlayerChangedWorldEvent event) {
 		Player player = event.getPlayer();
-		if (!player.hasPermission("vitalfly.fly") || !player.hasPermission("vitalfly.fly.login")) {
+		if (!player.hasPermission("vitalfly.fly") || !player.hasPermission("vitalfly.fly.worldchange")) {
 			return;
 		}
-		if (isInAir(event)) {
-			player.setAllowFlight(true);
-			player.setFlying(true);
-		}
-	}
-
-	private boolean isInAir(@NotNull PlayerJoinEvent event) {
-		Player player = event.getPlayer();
-		Location location = player.getLocation();
-		location.setY(location.getY() - 2);
-		return player.getWorld()
-		             .getBlockAt(location)
-		             .getType() == AIR;
+		player.setAllowFlight(true);
+		Chat.sendMessage(player, "now-flying");
 	}
 }

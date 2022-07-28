@@ -1,6 +1,6 @@
 name: VitalFly
 version: @version@
-main: com.tamrielnetwork.vitalfly.VitalFly
+main: dev.meinel.leo.vitalfly.VitalFly
 api-version: 1.17
 authors: [ Leopold Meinel ]
 description: Gives you the ability to fly and toggle fly speed.
