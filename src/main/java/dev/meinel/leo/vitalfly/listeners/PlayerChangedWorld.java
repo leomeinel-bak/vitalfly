@@ -18,15 +18,15 @@ import org.bukkit.event.player.PlayerChangedWorldEvent;
 import org.jetbrains.annotations.NotNull;
 
 public class PlayerChangedWorld
-		implements Listener {
+        implements Listener {
 
-	@EventHandler
-	public void onPlayerChangedWorld(@NotNull PlayerChangedWorldEvent event) {
-		Player player = event.getPlayer();
-		if (!player.hasPermission("vitalfly.fly") || !player.hasPermission("vitalfly.fly.worldchange")) {
-			return;
-		}
-		player.setAllowFlight(true);
-		Chat.sendMessage(player, "now-flying");
-	}
+    @EventHandler
+    public void onPlayerChangedWorld(@NotNull PlayerChangedWorldEvent event) {
+        Player player = event.getPlayer();
+        if (!player.hasPermission("vitalfly.fly") || !player.hasPermission("vitalfly.fly.worldchange")) {
+            return;
+        }
+        player.setAllowFlight(true);
+        Chat.sendMessage(player, "now-flying");
+    }
 }

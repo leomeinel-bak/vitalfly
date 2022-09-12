@@ -23,53 +23,53 @@ import org.jetbrains.annotations.NotNull;
 import java.util.Map;
 
 public class VitalFlyCmd
-		implements CommandExecutor {
+        implements CommandExecutor {
 
-	@Override
-	public boolean onCommand(@NotNull CommandSender sender, @NotNull Command command, @NotNull String label,
-			@NotNull String[] args) {
-		if (Cmd.isArgsLengthGreaterThan(sender, args, 1)) {
-			return false;
-		}
-		doFly(sender, args);
-		return true;
-	}
+    @Override
+    public boolean onCommand(@NotNull CommandSender sender, @NotNull Command command, @NotNull String label,
+            @NotNull String[] args) {
+        if (Cmd.isArgsLengthGreaterThan(sender, args, 1)) {
+            return false;
+        }
+        doFly(sender, args);
+        return true;
+    }
 
-	private void doFly(@NotNull CommandSender sender, @NotNull String[] args) {
-		if (Cmd.isInvalidSender(sender)) {
-			return;
-		}
-		Player senderPlayer = (Player) sender;
-		if (args.length == 0) {
-			if (Cmd.isNotPermitted(sender, "vitalfly.fly")) {
-				return;
-			}
-			if (senderPlayer.getAllowFlight()) {
-				senderPlayer.setAllowFlight(false);
-				senderPlayer.setFlying(false);
-				Chat.sendMessage(senderPlayer, "now-flying-disabled");
-				return;
-			}
-			senderPlayer.setAllowFlight(true);
-			Chat.sendMessage(senderPlayer, "now-flying");
-			return;
-		}
-		if (args.length == 1) {
-			Player player = Bukkit.getPlayer(args[0]);
-			if (CmdSpec.isInvalidCmd(sender, player, "vitalfly.fly.others")) {
-				return;
-			}
-			assert player != null;
-			if (player.getAllowFlight()) {
-				player.setAllowFlight(false);
-				player.setFlying(false);
-				Chat.sendMessage(senderPlayer, Map.of("%player%", player.getName()), "player-now-flying-disabled");
-				Chat.sendMessage(player, "now-flying-disabled");
-				return;
-			}
-			player.setAllowFlight(true);
-			Chat.sendMessage(senderPlayer, Map.of("%player%", player.getName()), "player-now-flying");
-			Chat.sendMessage(player, "now-flying");
-		}
-	}
+    private void doFly(@NotNull CommandSender sender, @NotNull String[] args) {
+        if (Cmd.isInvalidSender(sender)) {
+            return;
+        }
+        Player senderPlayer = (Player) sender;
+        if (args.length == 0) {
+            if (Cmd.isNotPermitted(sender, "vitalfly.fly")) {
+                return;
+            }
+            if (senderPlayer.getAllowFlight()) {
+                senderPlayer.setAllowFlight(false);
+                senderPlayer.setFlying(false);
+                Chat.sendMessage(senderPlayer, "now-flying-disabled");
+                return;
+            }
+            senderPlayer.setAllowFlight(true);
+            Chat.sendMessage(senderPlayer, "now-flying");
+            return;
+        }
+        if (args.length == 1) {
+            Player player = Bukkit.getPlayer(args[0]);
+            if (CmdSpec.isInvalidCmd(sender, player, "vitalfly.fly.others")) {
+                return;
+            }
+            assert player != null;
+            if (player.getAllowFlight()) {
+                player.setAllowFlight(false);
+                player.setFlying(false);
+                Chat.sendMessage(senderPlayer, Map.of("%player%", player.getName()), "player-now-flying-disabled");
+                Chat.sendMessage(player, "now-flying-disabled");
+                return;
+            }
+            player.setAllowFlight(true);
+            Chat.sendMessage(senderPlayer, Map.of("%player%", player.getName()), "player-now-flying");
+            Chat.sendMessage(player, "now-flying");
+        }
+    }
 }

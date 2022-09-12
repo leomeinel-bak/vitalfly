@@ -20,26 +20,26 @@ import org.jetbrains.annotations.NotNull;
 import static org.bukkit.Material.AIR;
 
 public class PlayerJoin
-		implements Listener {
+        implements Listener {
 
-	@EventHandler
-	public void onPlayerJoin(@NotNull PlayerJoinEvent event) {
-		Player player = event.getPlayer();
-		if (!player.hasPermission("vitalfly.fly") || !player.hasPermission("vitalfly.fly.login")) {
-			return;
-		}
-		if (isInAir(event)) {
-			player.setAllowFlight(true);
-			player.setFlying(true);
-		}
-	}
+    @EventHandler
+    public void onPlayerJoin(@NotNull PlayerJoinEvent event) {
+        Player player = event.getPlayer();
+        if (!player.hasPermission("vitalfly.fly") || !player.hasPermission("vitalfly.fly.login")) {
+            return;
+        }
+        if (isInAir(event)) {
+            player.setAllowFlight(true);
+            player.setFlying(true);
+        }
+    }
 
-	private boolean isInAir(@NotNull PlayerJoinEvent event) {
-		Player player = event.getPlayer();
-		Location location = player.getLocation();
-		location.setY(location.getY() - 2);
-		return player.getWorld()
-				.getBlockAt(location)
-				.getType() == AIR;
-	}
+    private boolean isInAir(@NotNull PlayerJoinEvent event) {
+        Player player = event.getPlayer();
+        Location location = player.getLocation();
+        location.setY(location.getY() - 2);
+        return player.getWorld()
+                .getBlockAt(location)
+                .getType() == AIR;
+    }
 }
