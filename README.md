@@ -1,4 +1,5 @@
 <!-- PROJECT SHIELDS -->
+
 [![Contributors][contributors-shield]][contributors-url]
 [![Forks][forks-shield]][forks-url]
 [![Stargazers][stars-shield]][stars-url]
@@ -69,16 +70,16 @@ This plugin is perfect for any server wanting their players to fly in survival.
 
 ### Features
 
-* Toggle fly on and off for command sender and other players
-* Set fly speed for command sender and other players
-* Keep fly on world change
-* Keep fly toggled on rejoin when player is falling
-* Keep fly toggled when player changes back to survival
+- Toggle fly on and off for command sender and other players
+- Set fly speed for command sender and other players
+- Keep fly on world change
+- Keep fly toggled on rejoin when player is falling
+- Keep fly toggled when player changes back to survival
 
 ### Built With
 
-* [Gradle 7](https://docs.gradle.org/7.4/release-notes.html)
-* [OpenJDK 17](https://openjdk.java.net/projects/jdk/17/)
+- [Gradle 7](https://docs.gradle.org/7.4/release-notes.html)
+- [OpenJDK 17](https://openjdk.java.net/projects/jdk/17/)
 
 <!-- GETTING STARTED -->
 
@@ -90,35 +91,35 @@ To get the plugin running on your server follow these simple steps.
 
 1. Permission: `vitalfly.fly`
 
-* Command: `/fly`
-* Description: Toggle fly
+- Command: `/fly`
+- Description: Toggle fly
 
 2. Permission: `vitalfly.fly.others`
 
-* Command: `/fly <player>`
-* Description: Toggle fly for other players
+- Command: `/fly <player>`
+- Description: Toggle fly for other players
 
 3. Permission: `vitalfly.flyspeed`
 
-* Command: `/flyspeed <flyspeed>`
-* Description: Set flyspeed
+- Command: `/flyspeed <flyspeed>`
+- Description: Set flyspeed
 
 4. Permission: `vitalfly.flyspeed.others`
 
-* Command: `/flyspeed <player> <flyspeed>`
-* Description: Set flyspeed for other players
+- Command: `/flyspeed <player> <flyspeed>`
+- Description: Set flyspeed for other players
 
 5. Permission: `vitalfly.fly.worldchange`
 
-* Description: Keep fly on worldchange
+- Description: Keep fly on worldchange
 
 6. Permission: `vitalfly.fly.gamemodechange`
 
-* Description: Keep fly on gamemodechange
+- Description: Keep fly on gamemodechange
 
 7. Permission: `vitalfly.fly.login`
 
-* Description: Keep fly on login
+- Description: Keep fly on login
 
 ### Configuration - config.yml
 
@@ -185,30 +186,19 @@ Project Link - [VitalFly](https://github.com/LeoMeinel/VitalFly) - GitHub
 
 ### Acknowledgements
 
-* [README.md - othneildrew](https://github.com/othneildrew/Best-README-Template)
+- [README.md - othneildrew](https://github.com/othneildrew/Best-README-Template)
 
 <!-- MARKDOWN LINKS & IMAGES -->
 
 [contributors-shield]: https://img.shields.io/github/contributors-anon/LeoMeinel/VitalFly?style=for-the-badge
-
 [contributors-url]: https://github.com/LeoMeinel/VitalFly/graphs/contributors
-
 [forks-shield]: https://img.shields.io/github/forks/LeoMeinel/VitalFly?label=Forks&style=for-the-badge
-
 [forks-url]: https://github.com/LeoMeinel/VitalFly/network/members
-
 [stars-shield]: https://img.shields.io/github/stars/LeoMeinel/VitalFly?style=for-the-badge
-
 [stars-url]: https://github.com/LeoMeinel/VitalFly/stargazers
-
 [issues-shield]: https://img.shields.io/github/issues/LeoMeinel/VitalFly?style=for-the-badge
-
 [issues-url]: https://github.com/LeoMeinel/VitalFly/issues
-
 [license-shield]: https://img.shields.io/github/license/LeoMeinel/VitalFly?style=for-the-badge
-
 [license-url]: https://github.com/LeoMeinel/VitalFly/blob/main/LICENSE
-
 [quality-shield]: https://img.shields.io/codefactor/grade/github/LeoMeinel/VitalFly?style=for-the-badge
-
 [quality-url]: https://www.codefactor.io/repository/github/LeoMeinel/VitalFly

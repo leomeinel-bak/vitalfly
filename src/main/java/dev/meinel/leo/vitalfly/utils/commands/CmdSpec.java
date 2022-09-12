@@ -1,19 +1,11 @@
 /*
- * VitalFly is a Spigot Plugin that gives players the ability to fly.
- * Copyright © 2022 Leopold Meinel & contributors
- *
- * This program is free software: you can redistribute it and/or modify
- * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation, either version 3 of the License, or
- * (at your option) any later version.
- *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
- * GNU General Public License for more details.
- *
- * You should have received a copy of the GNU General Public License
- * along with this program. If not, see https://github.com/LeoMeinel/VitalFly/blob/main/LICENSE
+ * File: CmdSpec.java
+ * Author: Leopold Meinel (leo@meinel.dev)
+ * -----
+ * Copyright (c) 2022 Leopold Meinel & contributors
+ * SPDX ID: GPL-3.0-or-later
+ * URL: https://www.gnu.org/licenses/gpl-3.0-standalone.html
+ * -----
  */
 
 package dev.meinel.leo.vitalfly.utils.commands;
@@ -52,7 +44,7 @@ public class CmdSpec {
 		float flySpeed = Float.parseFloat(arg);
 		player.setFlySpeed(flySpeed / 10);
 		Chat.sendMessage(senderPlayer, Map.of("%player%", player.getName(), FLYSPEED, String.valueOf(flySpeed)),
-		                 "player-flyspeed-changed");
+				"player-flyspeed-changed");
 		Chat.sendMessage(player, Map.of(FLYSPEED, String.valueOf(flySpeed)), "flyspeed-changed");
 	}
 
@@ -68,13 +60,12 @@ public class CmdSpec {
 				return true;
 			}
 			if (flySpeed > main.getConfig()
-			                   .getInt("flyspeed.limit")) {
+					.getInt("flyspeed.limit")) {
 				Chat.sendMessage(sender, "beyond-limit");
 				return true;
 			}
 			return false;
-		}
-		catch (NumberFormatException numberFormatException) {
+		} catch (NumberFormatException numberFormatException) {
 			Chat.sendMessage(sender, "invalid-amount");
 			return true;
 		}
