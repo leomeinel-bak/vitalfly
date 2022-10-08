@@ -11,7 +11,7 @@
 <!--suppress ALL -->
 <br />
 <p align="center">
-  <a href="https://github.com/LeoMeinel/VitalFly">
+  <a href="https://github.com/LeoMeinel/vitalfly">
     <img src="images/logo.png" alt="Logo" width="80" height="80">
   </a>
 
@@ -20,14 +20,14 @@
   <p align="center">
     Fly on Spigot and Paper
     <br />
-    <a href="https://github.com/LeoMeinel/VitalFly"><strong>Explore the docs »</strong></a>
+    <a href="https://github.com/LeoMeinel/vitalfly"><strong>Explore the docs »</strong></a>
     <br />
     <br />
-    <a href="https://github.com/LeoMeinel/VitalFly">View Demo</a>
+    <a href="https://github.com/LeoMeinel/vitalfly">View Demo</a>
     ·
-    <a href="https://github.com/LeoMeinel/VitalFly/issues">Report Bug</a>
+    <a href="https://github.com/LeoMeinel/vitalfly/issues">Report Bug</a>
     ·
-    <a href="https://github.com/LeoMeinel/VitalFly/issues">Request Feature</a>
+    <a href="https://github.com/LeoMeinel/vitalfly/issues">Request Feature</a>
   </p>
 
 <!-- ABOUT THE PROJECT -->
@@ -124,7 +124,7 @@ beyond-limit: "&cThe number is too high!"
 
 ## Roadmap
 
-See the [open issues](https://github.com/LeoMeinel/VitalFly/issues) for a list of proposed features (and known
+See the [open issues](https://github.com/LeoMeinel/vitalfly/issues) for a list of proposed features (and known
 issues).
 
 <!-- CONTRIBUTING -->
@@ -152,7 +152,7 @@ Distributed under the GNU General Public License v3.0. See `LICENSE` for more in
 
 Leopold Meinel - [leo@meinel.dev](mailto:leo@meinel.dev) - eMail
 
-Project Link - [VitalFly](https://github.com/LeoMeinel/VitalFly) - GitHub
+Project Link - [VitalFly](https://github.com/LeoMeinel/vitalfly) - GitHub
 
 <!-- ACKNOWLEDGEMENTS -->
 
@@ -162,15 +162,15 @@ Project Link - [VitalFly](https://github.com/LeoMeinel/VitalFly) - GitHub
 
 <!-- MARKDOWN LINKS & IMAGES -->
 
-[contributors-shield]: https://img.shields.io/github/contributors-anon/LeoMeinel/VitalFly?style=for-the-badge
-[contributors-url]: https://github.com/LeoMeinel/VitalFly/graphs/contributors
-[forks-shield]: https://img.shields.io/github/forks/LeoMeinel/VitalFly?label=Forks&style=for-the-badge
-[forks-url]: https://github.com/LeoMeinel/VitalFly/network/members
-[stars-shield]: https://img.shields.io/github/stars/LeoMeinel/VitalFly?style=for-the-badge
-[stars-url]: https://github.com/LeoMeinel/VitalFly/stargazers
-[issues-shield]: https://img.shields.io/github/issues/LeoMeinel/VitalFly?style=for-the-badge
-[issues-url]: https://github.com/LeoMeinel/VitalFly/issues
-[license-shield]: https://img.shields.io/github/license/LeoMeinel/VitalFly?style=for-the-badge
-[license-url]: https://github.com/LeoMeinel/VitalFly/blob/main/LICENSE
-[quality-shield]: https://img.shields.io/codefactor/grade/github/LeoMeinel/VitalFly?style=for-the-badge
-[quality-url]: https://www.codefactor.io/repository/github/LeoMeinel/VitalFly
+[contributors-shield]: https://img.shields.io/github/contributors-anon/LeoMeinel/vitalfly?style=for-the-badge
+[contributors-url]: https://github.com/LeoMeinel/vitalfly/graphs/contributors
+[forks-shield]: https://img.shields.io/github/forks/LeoMeinel/vitalfly?label=Forks&style=for-the-badge
+[forks-url]: https://github.com/LeoMeinel/vitalfly/network/members
+[stars-shield]: https://img.shields.io/github/stars/LeoMeinel/vitalfly?style=for-the-badge
+[stars-url]: https://github.com/LeoMeinel/vitalfly/stargazers
+[issues-shield]: https://img.shields.io/github/issues/LeoMeinel/vitalfly?style=for-the-badge
+[issues-url]: https://github.com/LeoMeinel/vitalfly/issues
+[license-shield]: https://img.shields.io/github/license/LeoMeinel/vitalfly?style=for-the-badge
+[license-url]: https://github.com/LeoMeinel/vitalfly/blob/main/LICENSE
+[quality-shield]: https://img.shields.io/codefactor/grade/github/LeoMeinel/vitalfly?style=for-the-badge
+[quality-url]: https://www.codefactor.io/repository/github/LeoMeinel/vitalfly
