@@ -2,7 +2,7 @@
  * File: VitalFlyCmd.java
  * Author: Leopold Meinel (leo@meinel.dev)
  * -----
- * Copyright (c) 2022 Leopold Meinel & contributors
+ * Copyright (c) 2023 Leopold Meinel & contributors
  * SPDX ID: GPL-3.0-or-later
  * URL: https://www.gnu.org/licenses/gpl-3.0-standalone.html
  * -----
@@ -22,12 +22,11 @@ import org.jetbrains.annotations.NotNull;
 
 import java.util.Map;
 
-public class VitalFlyCmd
-        implements CommandExecutor {
+public class VitalFlyCmd implements CommandExecutor {
 
     @Override
-    public boolean onCommand(@NotNull CommandSender sender, @NotNull Command command, @NotNull String label,
-            @NotNull String[] args) {
+    public boolean onCommand(@NotNull CommandSender sender, @NotNull Command command,
+            @NotNull String label, @NotNull String[] args) {
         if (Cmd.isArgsLengthGreaterThan(sender, args, 1)) {
             return false;
         }
@@ -63,12 +62,14 @@ public class VitalFlyCmd
             if (player.getAllowFlight()) {
                 player.setAllowFlight(false);
                 player.setFlying(false);
-                Chat.sendMessage(senderPlayer, Map.of("%player%", player.getName()), "player-now-flying-disabled");
+                Chat.sendMessage(senderPlayer, Map.of("%player%", player.getName()),
+                        "player-now-flying-disabled");
                 Chat.sendMessage(player, "now-flying-disabled");
                 return;
             }
             player.setAllowFlight(true);
-            Chat.sendMessage(senderPlayer, Map.of("%player%", player.getName()), "player-now-flying");
+            Chat.sendMessage(senderPlayer, Map.of("%player%", player.getName()),
+                    "player-now-flying");
             Chat.sendMessage(player, "now-flying");
         }
     }

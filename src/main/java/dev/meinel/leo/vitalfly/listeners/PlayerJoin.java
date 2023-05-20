@@ -2,7 +2,7 @@
  * File: PlayerJoin.java
  * Author: Leopold Meinel (leo@meinel.dev)
  * -----
- * Copyright (c) 2022 Leopold Meinel & contributors
+ * Copyright (c) 2023 Leopold Meinel & contributors
  * SPDX ID: GPL-3.0-or-later
  * URL: https://www.gnu.org/licenses/gpl-3.0-standalone.html
  * -----
@@ -19,8 +19,7 @@ import org.jetbrains.annotations.NotNull;
 
 import static org.bukkit.Material.AIR;
 
-public class PlayerJoin
-        implements Listener {
+public class PlayerJoin implements Listener {
 
     @EventHandler
     public void onPlayerJoin(@NotNull PlayerJoinEvent event) {
@@ -38,8 +37,6 @@ public class PlayerJoin
         Player player = event.getPlayer();
         Location location = player.getLocation();
         location.setY(location.getY() - 2);
-        return player.getWorld()
-                .getBlockAt(location)
-                .getType() == AIR;
+        return player.getWorld().getBlockAt(location).getType() == AIR;
     }
 }

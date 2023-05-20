@@ -2,7 +2,7 @@
  * File: CmdSpec.java
  * Author: Leopold Meinel (leo@meinel.dev)
  * -----
- * Copyright (c) 2022 Leopold Meinel & contributors
+ * Copyright (c) 2023 Leopold Meinel & contributors
  * SPDX ID: GPL-3.0-or-later
  * URL: https://www.gnu.org/licenses/gpl-3.0-standalone.html
  * -----
@@ -34,21 +34,25 @@ public class CmdSpec {
         }
         float flySpeed = Float.parseFloat(arg);
         senderPlayer.setFlySpeed(flySpeed / 10);
-        Chat.sendMessage(senderPlayer, Map.of(FLYSPEED, String.valueOf(flySpeed)), "flyspeed-changed");
+        Chat.sendMessage(senderPlayer, Map.of(FLYSPEED, String.valueOf(flySpeed)),
+                "flyspeed-changed");
     }
 
-    public static void setFlySpeed(@NotNull Player senderPlayer, @NotNull String arg, Player player) {
+    public static void setFlySpeed(@NotNull Player senderPlayer, @NotNull String arg,
+            Player player) {
         if (isInvalidFlySpeed(senderPlayer, arg)) {
             return;
         }
         float flySpeed = Float.parseFloat(arg);
         player.setFlySpeed(flySpeed / 10);
-        Chat.sendMessage(senderPlayer, Map.of("%player%", player.getName(), FLYSPEED, String.valueOf(flySpeed)),
+        Chat.sendMessage(senderPlayer,
+                Map.of("%player%", player.getName(), FLYSPEED, String.valueOf(flySpeed)),
                 "player-flyspeed-changed");
         Chat.sendMessage(player, Map.of(FLYSPEED, String.valueOf(flySpeed)), "flyspeed-changed");
     }
 
-    public static boolean isInvalidCmd(@NotNull CommandSender sender, Player player, @NotNull String perm) {
+    public static boolean isInvalidCmd(@NotNull CommandSender sender, Player player,
+            @NotNull String perm) {
         return Cmd.isNotPermitted(sender, perm) || Cmd.isInvalidPlayer(sender, player);
     }
 
@@ -59,8 +63,7 @@ public class CmdSpec {
                 Chat.sendMessage(sender, "invalid-amount");
                 return true;
             }
-            if (flySpeed > main.getConfig()
-                    .getInt("flyspeed.limit")) {
+            if (flySpeed > main.getConfig().getInt("flyspeed.limit")) {
                 Chat.sendMessage(sender, "beyond-limit");
                 return true;
             }

@@ -2,7 +2,7 @@
  * File: VitalFlySpeedCmd.java
  * Author: Leopold Meinel (leo@meinel.dev)
  * -----
- * Copyright (c) 2022 Leopold Meinel & contributors
+ * Copyright (c) 2023 Leopold Meinel & contributors
  * SPDX ID: GPL-3.0-or-later
  * URL: https://www.gnu.org/licenses/gpl-3.0-standalone.html
  * -----
@@ -19,13 +19,13 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 import org.jetbrains.annotations.NotNull;
 
-public class VitalFlySpeedCmd
-        implements CommandExecutor {
+public class VitalFlySpeedCmd implements CommandExecutor {
 
     @Override
-    public boolean onCommand(@NotNull CommandSender sender, @NotNull Command command, @NotNull String label,
-            @NotNull String[] args) {
-        if (Cmd.isArgsLengthEqualTo(sender, args, 0) || Cmd.isArgsLengthGreaterThan(sender, args, 2)) {
+    public boolean onCommand(@NotNull CommandSender sender, @NotNull Command command,
+            @NotNull String label, @NotNull String[] args) {
+        if (Cmd.isArgsLengthEqualTo(sender, args, 0)
+                || Cmd.isArgsLengthGreaterThan(sender, args, 2)) {
             return false;
         }
         doFlySpeed(sender, args);
@@ -45,8 +45,8 @@ public class VitalFlySpeedCmd
         }
         if (args.length == 2) {
             Player player = Bukkit.getPlayer(args[0]);
-            if (Cmd.isInvalidPlayer(sender, player) || CmdSpec.isInvalidCmd(sender, player,
-                    "vitalfly.flyspeed.others")) {
+            if (Cmd.isInvalidPlayer(sender, player)
+                    || CmdSpec.isInvalidCmd(sender, player, "vitalfly.flyspeed.others")) {
                 return;
             }
             CmdSpec.setFlySpeed(senderPlayer, args[1], player);

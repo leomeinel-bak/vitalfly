@@ -2,7 +2,7 @@
  * File: PlayerChangedWorld.java
  * Author: Leopold Meinel (leo@meinel.dev)
  * -----
- * Copyright (c) 2022 Leopold Meinel & contributors
+ * Copyright (c) 2023 Leopold Meinel & contributors
  * SPDX ID: GPL-3.0-or-later
  * URL: https://www.gnu.org/licenses/gpl-3.0-standalone.html
  * -----
@@ -17,13 +17,13 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerChangedWorldEvent;
 import org.jetbrains.annotations.NotNull;
 
-public class PlayerChangedWorld
-        implements Listener {
+public class PlayerChangedWorld implements Listener {
 
     @EventHandler
     public void onPlayerChangedWorld(@NotNull PlayerChangedWorldEvent event) {
         Player player = event.getPlayer();
-        if (!player.hasPermission("vitalfly.fly") || !player.hasPermission("vitalfly.fly.worldchange")) {
+        if (!player.hasPermission("vitalfly.fly")
+                || !player.hasPermission("vitalfly.fly.worldchange")) {
             return;
         }
         player.setAllowFlight(true);
