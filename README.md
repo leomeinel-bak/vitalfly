@@ -105,7 +105,6 @@ flyspeed:
 ### Configuration - messages.yml
 
 ```yaml
-cmd: "&fUsage: &b/fly <player> &for &b/flyspeed <player> <flyspeed>"
 now-flying: "&fFly toggled &aON"
 no-perms: "&cYou don't have enough permissions!"
 player-only: "&cThis command can only be executed by players!"
