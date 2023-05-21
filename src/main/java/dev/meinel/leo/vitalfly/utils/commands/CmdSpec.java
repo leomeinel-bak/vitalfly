@@ -53,7 +53,7 @@ public class CmdSpec {
 
     public static boolean isInvalidCmd(@NotNull CommandSender sender, Player player,
             @NotNull String perm) {
-        return Cmd.isNotPermitted(sender, perm) || Cmd.isInvalidPlayer(sender, player);
+        return !Cmd.isPermitted(sender, perm) || Cmd.isInvalidPlayer(sender, player);
     }
 
     private static boolean isInvalidFlySpeed(@NotNull CommandSender sender, @NotNull String arg) {

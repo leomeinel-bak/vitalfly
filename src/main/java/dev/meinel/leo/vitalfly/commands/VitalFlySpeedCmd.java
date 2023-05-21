@@ -38,7 +38,7 @@ public class VitalFlySpeedCmd implements CommandExecutor {
         }
         Player senderPlayer = (Player) sender;
         if (args.length == 1) {
-            if (Cmd.isNotPermitted(sender, "vitalfly.flyspeed")) {
+            if (!Cmd.isPermitted(sender, "vitalfly.flyspeed")) {
                 return;
             }
             CmdSpec.setFlySpeed(senderPlayer, args[0]);

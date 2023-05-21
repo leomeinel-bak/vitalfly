@@ -40,7 +40,7 @@ public class VitalFlyCmd implements CommandExecutor {
         }
         Player senderPlayer = (Player) sender;
         if (args.length == 0) {
-            if (Cmd.isNotPermitted(sender, "vitalfly.fly")) {
+            if (!Cmd.isPermitted(sender, "vitalfly.fly")) {
                 return;
             }
             if (senderPlayer.getAllowFlight()) {
